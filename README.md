@@ -30,5 +30,5 @@ Godot Voxel本质是一个基于Godot源码开发的C++模块，以单独的Godo
 - [基于VoxelInstancer的实例化](./主文档/基于VoxelInstancer的实例化.md) | [程序化生成](./主文档/程序化生成.md) 
 - [创建多人游戏](./主文档/创建多人游戏.md) 
 - [参与Goodot Voxel模块开发](./主文档/参与GoodotVoxel模块开发.md) 
-- [API文档](./API/API文档.md) 
+- [API文档](./API/API文档.md) |  [序列化格式](./序列化格式/序列化格式.md) 
 
