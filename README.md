@@ -1,6 +1,6 @@
 # Godot Voxel中文文档【翻译项目】
 
-![image](https://github.com/xun69/godot_voxel_chinese_doc/assets/23306801/a4ecc367-0618-409c-bab4-0578cd2a1582)
+![image](./README.assets/a4ecc367-0618-409c-bab4-0578cd2a1582.png)
 
 ## 概述
 
