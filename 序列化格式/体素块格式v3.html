@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>体素块格式v3</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<h1>体素块格式v3</h1><p>
+
+ 警告<p>
+  
+本文档是关于该格式的旧版本。您可以查看最新版本。<p>
+ 版本： 3<p>
+  
+本页介绍本模块中默认使用的二进制格式，用于将体素块序列化为文件、网络或数据库。<p>
+<h3>  </h3><p>
+与版本 2 相比的变化<p>
+<li>    </li><p>
+    第二个通道（索引 1）用于 SDF 数据，但格式没有规定任何关于它的特殊内容。现在预计它将用于自卫队。它曾经具有定点编码的任意格式。它现在正在使用 inorm16。
+<li>    </li><p>
+    压缩格式 <span class="inline_code">1</span> 已弃用。
+<li>    </li><p>
+    已将压缩包装器移至其自己的规范。<p>
+<h2> 规范</h2><p>
+
+<h3> 恩迪亚斯</h3><p>
+
+  
+默认情况下，小端序。<p>
+<h3> 压缩容器</h3><p>
+
+  
+块通常在压缩数据容器中序列化。这是 <span class="inline_code">VoxelBlockSerializer</span> 实用程序类提供的格式。如果不使用压缩，则布局将对应于 <span class="inline_code">BlockData</span> 下一个列表中的描述，并且不会有此包装器。有关规范，请参阅压缩容器格式。<p>
+<h3> 块格式</h3><p>
+
+  
+它从一个字节中的版本号 <span class="inline_code">3</span> 开始，然后是一些元数据和实际的体素。<p>
+ 注意<p>
+  
+存在大小和格式以使格式独立。在分块容器（如区域文件）中使用时，建议检查它们是否与整个卷的预期格式匹配。<p>
+<div class="code_block"><pre><code>BlockData
+- version: uint8_t
+- size_x: uint16_t
+- size_y: uint16_t
+- size_z: uint16_t
+- channels[8]
+- metadata*
+- epilogue
+</code>
+</pre>
+</div><p>
+
+<h3> 通道</h3><p>
+
+  
+块数据以 8 个通道一个接一个开始，每个通道具有以下结构：<p>
+<div class="code_block"><pre><code>Channel
+- format: uint8_t (low nibble = compression, high nibble = depth)
+- data
+</code>
+</pre>
+</div><p>
+
+  
+<span class="inline_code">format</span> 包含压缩和位深度，分别称为 <span class="inline_code">VoxelBuffer::Compression</span> 和 <span class="inline_code">VoxelBuffer::Depth</span> 枚举。低咬包含压缩，高咬包含深度。根据这些值， <span class="inline_code">data</span> 会有所不同。<p>
+  
+深度可以是 0（8 位）、1（16 位）、2（32 位）或 3（64 位）。<p>
+  
+如果压缩为 <span class="inline_code">COMPRESSION_NONE</span> （0）， <span class="inline_code">data</span> 则将是一个 N\*S 字节数组，其中 N 是块内的体素数乘以对应于位深度的字节数。例如，大小为 16x16x16 的块和 32 位深度的通道将具有 <span class="inline_code">16*16*16*4</span> 要从文件加载到此通道的字节。该数据的 3D 索引是有序 <span class="inline_code">ZXY</span> 的。<p>
+  
+如果压缩为 <span class="inline_code">COMPRESSION_UNIFORM</span> （1），则数据将是单个体素值，这意味着块中的所有体素都具有相同的值。未使用的频道将始终使用此模式。该值跨越由深度定义的相同字节数。<p>
+  
+其他压缩值无效。<p>
+<h4> SDF 通道</h4><p>
+
+  
+第二个通道（索引 1 处）用于 SDF 数据。如果深度为 8 或 16 位，则可能包含编码为 <span class="inline_code">inorm8</span> 或 <span class="inline_code">inorm16</span> 的定点值。这是 \[-1..1\] 范围内的数字。<p>
+  
+要从 <span class="inline_code">int8</span> 获取 ， <span class="inline_code">float</span> 请使用 <span class="inline_code">max(i / 127, -1.f)</span> 。 要从 <span class="inline_code">int16</span> 获取 ， <span class="inline_code">float</span> 请使用 <span class="inline_code">max(i / 32767, -1.f)</span> 。<p>
+  
+对于 32 位深度，使用常规 <span class="inline_code">float</span> 。对于 64 位深度，使用常规 <span class="inline_code">double</span> 。<p>
+<h3> 元数据</h3><p>
+
+  
+在所有通道信息之后，块数据可以包含元数据信息。不包含任何内容的块在达到要读取的总数据大小之前，将只剩下固定数量的字节（来自结语）。如果有更多，则块包含元数据。<p>
+<div class="code_block"><pre><code>Metadata
+- metadata_size: uint32_t
+- block_metadata
+- voxel_metadata[*]
+</code>
+</pre>
+</div><p>
+
+  
+它从一个 32 位无符号整数开头，表示要读取的所有元数据的总大小。该数据分为两组：一组用于整个块，另一组用于每个体素。<p>
+  
+块元数据是一个戈多 <span class="inline_code">Variant</span> ，使用引擎 <span class="inline_code">encode_variant</span> 的方法编码。<p>
+  
+体素元数据紧随其后。它是以下数据结构的序列，必须读取这些数据结构，直到从头开始读取总 <span class="inline_code">metadata_size</span> 字节数：<p>
+<div class="code_block"><pre><code>VoxelMetadata
+- x: uint16_t
+- y: uint16_t
+- z: uint16_t
+- data
+</code>
+</pre>
+</div><p>
+
+  
+<span class="inline_code">x</span> ， <span class="inline_code">y</span> 并 <span class="inline_code">z</span> 指示数据对应的体素。 <span class="inline_code">data</span> 也是以与前面描述相同的方式进行 <span class="inline_code">Variant</span> 编码。这将导致相对于块的体素位置与其相应的元数据之间的关联集合。<p>
+<h3> 尾声</h3><p>
+
+  
+最后，块数据以 4 个字节的序列结束，一旦读入 <span class="inline_code">uint32_t</span> 整数，必须与值 <span class="inline_code">0x900df00d</span> 匹配。如果不满足该条件，则必须假定该块已损坏。<p>
+ 注意<p>
+  
+在小端架构（如桌面）上，二进制编辑器不会将尾声显示为 <span class="inline_code">0x900df00d</span> ，而是 <span class="inline_code">0x0df00d90</span> 显示为。<p>
+<h2> 当前问题</h2><p>
+
+<h3> 恩迪亚斯</h3><p>
+
+  
+该格式旨在使用小端序，但是引擎的实现并不能完全保证这一点。<p>
+  
+Godot's <span class="inline_code">encode_variant</span> 似乎并不关心跨架构的字节序，因此将来可能会成为一个问题并更改为自定义格式。深度大于 8 位的块通道的实现目前也没有考虑这一点。这可能会在以后的迭代中得到优化。<p>
+  
+如果体素游戏需要在移动设备和桌面设备之间进行通信，这将变得非常重要。
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

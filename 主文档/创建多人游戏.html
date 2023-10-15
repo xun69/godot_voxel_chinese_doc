@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>创建多人游戏</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<h1>创建多人游戏</h1><p>
+
+体素游戏中的多人游戏可以通过许多不同的细节来实现。并非支持引擎的所有功能，它仍然有点实验性，将来可能会发生变化。因此，如何在带有日期的部分中解释了如何设置多人游戏。最新的方法通常与新的/更好/更简单的方式有关，而旧的最终可能会被删除。<p>
+<hr><p>
+<b>注意</b><p>
+
+本页假定您已经具备一般多人游戏编程方面的知识。强烈建议您事先学习。你可以看看Godot关于网络的文档页面。<p>
+<hr><p>
+<h2>2023/04/13 <li>带有和 <span class="inline_code">VoxelNetworkTerrain*</span> 节点的 <span class="inline_code">VoxelTerrain</span> 服务器端查看器</h2></li><p>
+<p>
+
+这是对以前方法的新迭代，基于相同的原理，但将其集成到引擎中，并提高了速度。<p>
+
+服务器将是权威的，客户端只是从中接收信息。客户端和服务器将需要不同的设置。<p>
+
+这将依赖于Godot的高级多人游戏API，使用RPC。在地形开始处理之前设置客户端或服务器非常重要。这可以在将游戏世界添加到树中或在 中 <span class="inline_code">_ready</span> 初始化多人游戏之前完成。<p>
+<h3> 在服务器上</h3><p>
+
+<li>    </li><p>
+    添加到 <span class="inline_code">VoxelTerrain</span> 场景中。
+<li>    </li><p>
+    添加一个 <span class="inline_code">VoxelTerrainMultiplayerSynchronizer</span> 节点作为 <span class="inline_code">VoxelTerrain</span> .
+<li>    </li><p>
+    当玩家加入时，请确保 <span class="inline_code">VoxelViewer</span> 为其创建一个。分配其 <span class="inline_code">network_peer_id</span> 并启用 <span class="inline_code">requires_data_block_notifications</span> .您可能还希望关闭 <span class="inline_code">require_visuals</span> 代表远程玩家的查看器，因为通常不需要渲染其周围环境。<p>
+<h3> 在客户端</h3><p>
+
+<li>    </li><p>
+    添加到 <span class="inline_code">VoxelTerrain</span> 场景中。
+<li>    </li><p>
+    将节点添加 <span class="inline_code">VoxelTerrainMultiplayerSynchronizer</span> 为 . <span class="inline_code">VoxelTerrain</span> 确保它与服务器等效项具有相同的名称。
+<li>    </li><p>
+    客户端仍然需要一个 <span class="inline_code">VoxelViewer</span> ，这将允许地形检测何时可以卸载体素数据（服务器不发送该信息）。为了减少在块过早卸载时在地形中出现“漏洞”的可能性，您可以为服务器 <span class="inline_code">VoxelViewer</span> 提供稍大的视图距离。
+<li>    </li><p>
+    客户端可以同步远程播放器，以便播放器可以看到它们，但您不应向其添加 （ <span class="inline_code">VoxelViewer</span> 只有服务器这样做）。客户端不必为远程玩家流式传输地形，它只有一个用于本地玩家的地形。<p>
+<h2>2022/01/31 <li>带有一些脚本的 <span class="inline_code">VoxelTerrain</span> 服务器端查看器</h2></li><p>
+<p>
+
+这是支持功能的第一次迭代，允许实现多人游戏。<p>
+
+这个想法是让服务器具有权威性，客户端只是从中接收信息。<p>
+<span class="inline_code">VoxelTerrain</span> 在检查器中具有类别 <span class="inline_code">Networking</span> 。这些属性不一定特定于多人游戏，但实际上是为了试验而添加的，因此将它们组合在一起。<p>
+
+客户端和服务器将需要不同的设置。<p>
+<h3> 在服务器上</h3><p>
+
+<li>    </li><p>
+    正常配置 <span class="inline_code">VoxelTerrain</span> ，使用生成器和流。
+<li>    </li><p>
+    打开 <span class="inline_code">VoxelTerrain</span> ，启用 <span class="inline_code">block_enter_notification_enabled</span>
+<li>    </li><p>
+    将脚本添加到 <span class="inline_code">VoxelTerrain</span> 实现 <span class="inline_code">func _on_data_block_entered(info)</span> .每次新的体素块进入远程玩家区域时，都会调用此函数。这将是您可以将块发送到客户端的地方。您可以使用 将 <span class="inline_code">VoxelBlockSerializer</span> 体素数据打包到字节中。 <span class="inline_code">info.are_voxels_edited()</span> 布尔值可以判断块是否被编辑过：如果没有，你可以避免发送整个数据，而只是告诉客户端在本地生成块。
+<li>    </li><p>
+    当玩家加入时，请确保为其创建 ， <span class="inline_code">VoxelViewer</span> 分配其 <span class="inline_code">network_peer_id</span> 并启用 <span class="inline_code">requires_data_block_notifications</span> .这将使地形加载其周围的块，并在需要将块发送到对等方时发出通知。
+<li>    </li><p>
+    在 上 <span class="inline_code">VoxelTerrain</span> ，启用 <span class="inline_code">area_edit_notification_enabled</span>
+<li>    </li><p>
+    在 <span class="inline_code">VoxelTerrain</span> 脚本中，实现 <span class="inline_code">func _on_area_edited(origin, size)</span> .每次在边界框中编辑体素时，都会调用此函数。内部的体素可能必须发送给所有足够近的玩家。您可以通过调用 <span class="inline_code">get_viewer_network_peer_ids_in_area(origin, size)</span> 来获取网络对等 ID 的列表。<p>
+<h3> 在客户端</h3><p>
+
+<li>    </li><p>
+    配置 <span class="inline_code">VoxelTerrain</span> 一个网格器，也许还有一个生成器，然后关闭 <span class="inline_code">automatic_loading_enabled</span> .体素只会根据服务器发送的内容进行加载。
+<li>    </li><p>
+    添加处理网络消息的脚本。从服务器接收到块时，使用该 <span class="inline_code">try_set_block_data</span> 函数将其存储在内部 <span class="inline_code">VoxelTerrain</span> 。
+<li>    </li><p>
+    当从服务器收到一盒已编辑的体素时，您可以使用 和 <span class="inline_code">VoxelTool</span> <span class="inline_code">paste</span> 函数来替换已编辑的体素。如果您希望客户端在本地生成块，则可以使用生成器创建一个 <span class="inline_code">generate_block_async()</span> 带有 .如果使用异步生成，请注意，写入的块将取消正在加载的 <span class="inline_code">try_set_block_data</span> 块。这意味着如果客户端在此期间收到编辑过的块，则生成块不会覆盖它。
+<li>    </li><p>
+    客户端仍然需要一个 <span class="inline_code">VoxelViewer</span> ，这将允许地形检测何时可以卸载体素数据（服务器不发送该信息）。为了减少块过早卸载时地形中出现“漏洞”的可能性，您可以为服务器提供比服务器 <span class="inline_code">VoxelViewer</span> 更大的视图距离。
+<li>    </li><p>
+    客户端可以同步远程播放器，以便播放器可以看到它们，但您不应向其添加 （ <span class="inline_code">VoxelViewer</span> 只有服务器这样做）。客户端不必为远程玩家流式传输地形，它只有一个用于本地玩家的地形。<p>
+<h2> 使用 <span class="inline_code">VoxelLodTerrain</span></h2><p>
+<p>
+目前没有支持，但已计划。<p>
+<h2> 协议说明</h2><p>
+<p>
+Godot 中的 RPC 使用 UDP（可靠或不可靠），因此向客户端发送大量体素的速度可能有限。相反，可以选择使用 TCP 发送块以及大型编辑。具有轻量级信息的小型编辑或确定性编辑可以继续使用可靠的 UDP。问题：您必须使用两个端口，一个用于UDP，一个用于TCP。因此，继续使用可靠的UDP也许是一个更好的主意。<p>
+
+注意：Minecraft的网络协议完全建立在TCP之上。<p>
+<h2>其他探索点</h2><p>
+
+<li>    </li><p>
+    块缓存和版本控制：在客户端保存块，这样服务器下次就不必在它们没有更改时再次发送它们
+<li>    </li><p>
+    客户端请求替代模型：让客户端主动请求带有自定义代码的块，而不是被动地从服务器接收它们
+<li>    </li><p>
+    块差异：如果客户端可以接受知道世界种子，而不是期望客户端缓存数据（这需要服务器知道客户端知道什么），而是在体素数据服务器端存储差异映射，每个体素 1 位。然后，如果不到 30% 的块发生了变化，则仅发送差额并让客户端填补空白。
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

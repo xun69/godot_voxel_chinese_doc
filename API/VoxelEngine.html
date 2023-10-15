@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VoxelEngine</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<hr>
+created: 2023-10-09T22:38:26 (UTC +08:00)
+tags: []
+source: https://voxel-tools.readthedocs.io/en/latest/api/VoxelEngine/
+author: 
+<hr><p>
+<h1>VoxelEngine体素引擎</h1><p>
+
+> <h2>Excerpt</h2><p>
+> 继承：对象<p>
+<hr>
+<li>  <a href='https://voxel-tools.readthedocs.io/en/latest/' target="_blank">https://voxel-tools.readthedocs.io/en/latest/</a></li><p>
+
+  
+脚本 API 体素引擎<p>
+___<p>
+<h2> 体素引擎</h2><p>
+
+ 继承：对象<p>
+  
+在后台线程中保存常用设置和处理体素处理任务的单一实例。<p>
+<h2> 方法：</h2>
+<table><tr><td>  返回 <td>  签名 </tr>
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_dictionary.html' target="_blank">字典</a>
+ |   
+get\_stats （ ） 常量 |<p>
+<h2> 方法说明</h2><p>
+
+<li>   Dictionaryget\_stats（ ）</li><p>
+
+  
+获取有关共享体素处理的调试信息。<p>
+  
+返回的字典具有以下结构：<p>
+<div class="code_block"><pre><code>{
+    "thread_pools": {
+        "general": {
+            "tasks": int,
+            "active_threads": int,
+            "thread_count": int
+        }
+    },
+    "tasks": {
+        "streaming": int,
+        "meshing": int,
+        "generation": int,
+        "main_thread": int
+    },
+    "memory_pools": {
+        "voxel_used": int,
+        "voxel_total": int,
+        "block_count": int
+    }
+}
+</code>
+</pre>
+</div><p>
+
+_  
+生成于 Oct 02， 2023_
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

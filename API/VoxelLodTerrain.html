@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VoxelLodTerrain</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<hr>
+created: 2023-10-09T22:38:26 (UTC +08:00)
+tags: []
+source: https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/
+author: 
+<hr><p>
+<h1>VoxelLodTerrain体素LodTerrain</h1><p>
+
+> <h2>Excerpt</h2><p>
+> 继承：体素节点<p>
+<hr>
+<h2> 体素地形</h2><p>
+
+ 继承：体素节点<p>
+  
+使用可变细节级别的体素体积。<p>
+<h2> 说明：</h2><p>
+
+  
+使用可变的细节级别渲染大型地形。这最好与平滑网格一起使用，例如VoxelMesherTransvoxel。<p>
+<h2> 属性：</h2>
+<table><tr><td>  类型 <td>  名字 <td>  违约 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_collision_layer' target="_blank">collision\_layer</a>
+ <tr><td> 1 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_collision_lod_count' target="_blank">collision\_lod\_count</a>
+ <tr><td> 0 </tr>
+<tr><td> <span class="inline_code">float</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_collision_margin' target="_blank">collision\_margin</a>
+ <tr><td> 0.04 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_collision_mask' target="_blank">collision\_mask</a>
+ <tr><td> 1 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_collision_update_delay' target="_blank">collision\_update\_delay</a>
+ <tr><td> 0 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_full_load_mode_enabled' target="_blank">full\_load\_mode\_enabled</a>
+ <tr><td>  假 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_generate_collisions' target="_blank">generate\_collisions</a>
+ <tr><td>  真 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_lod_count' target="_blank">lod\_count</a>
+ <tr><td> 4 </tr>
+<tr><td> <span class="inline_code">float</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_lod_distance' target="_blank">lod\_distance</a>
+ <tr><td> 48.0 </tr>
+<tr><td> <span class="inline_code">float</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_lod_fade_duration' target="_blank">lod\_fade\_duration</a>
+ <tr><td> 0.0 </tr>
+<tr><td> <span class="inline_code">Material</span> </tr>  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_material' target="_blank">材料</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_mesh_block_size' target="_blank">mesh\_block\_size</a>
+ <tr><td> 16 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_normalmap_begin_lod_index' target="_blank">normalmap\_begin\_lod\_index</a>
+ <tr><td> 2 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_normalmap_enabled' target="_blank">normalmap\_enabled</a>
+ <tr><td>  假 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_normalmap_max_deviation_degrees' target="_blank">normalmap\_max\_deviation\_degrees</a>
+ <tr><td> 60 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_normalmap_octahedral_encoding_enabled' target="_blank">normalmap\_octahedral\_encoding\_enabled</a>
+ <tr><td>  假 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_normalmap_tile_resolution_max' target="_blank">normalmap\_tile\_resolution\_max</a>
+ <tr><td> 8 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_normalmap_tile_resolution_min' target="_blank">normalmap\_tile\_resolution\_min</a>
+ <tr><td> 4 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_normalmap_use_gpu' target="_blank">normalmap\_use\_gpu</a>
+ <tr><td>  假 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_run_stream_in_editor' target="_blank">run\_stream\_in\_editor</a>
+ <tr><td>  真 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_threaded_update_enabled' target="_blank">threaded\_update\_enabled</a>
+ <tr><td>  假 </tr>
+<tr><td> <span class="inline_code">bool</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_use_gpu_generation' target="_blank">use\_gpu\_generation</a>
+ <tr><td>  假 </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_view_distance' target="_blank">view\_distance</a>
+ <tr><td> 512 </tr>
+<tr><td> <span class="inline_code">AABB</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#i_voxel_bounds' target="_blank">voxel\_bounds</a>
+ |   
+AABB（-5.36871e+08， -5.36871e+08， -5.36871e+08， 1.07374e+09， 1.07374e+09， 1.07374e+09） |<p>
+<h2> 方法：</h2>
+<table><tr><td>  返回 <td>  签名 </tr>
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+debug\_dump\_as\_scene （字符串路径，布尔值include\_instancer）常量 |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+debug\_get\_data\_block\_count （ ） 常量 |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_dictionary.html' target="_blank">字典</a>
+ |   
+debug\_get\_data\_block\_info （ Vector3 block\_pos， int lod ） const |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_bool.html' target="_blank">布尔</a>
+ |   
+debug\_get\_draw\_flag （ int flag\_index ） const |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+debug\_get\_mesh\_block\_count （ ） 常量 |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_dictionary.html' target="_blank">字典</a>
+ |   
+debug\_get\_mesh\_block\_info （ Vector3 block\_pos， int lod ） const |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_array.html' target="_blank">数组</a>
+ |   
+debug\_get\_octrees\_detailed （ ） 常量 |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_bool.html' target="_blank">布尔</a>
+ |   
+debug\_is\_draw\_enabled （ ） 常量 |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_array.html' target="_blank">数组</a>
+ |   
+debug\_print\_sdf\_top\_down（矢量3i中心，矢量3i范围） |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_array.html' target="_blank">数组</a>
+ |   
+debug\_raycast\_mesh\_block （ Vector3 origin， Vector3 dir ） const |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#' target="_blank">无效</a>
+ |   
+debug\_set\_draw\_enabled （ 启用布尔值 ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#' target="_blank">无效</a>
+ |   
+debug\_set\_draw\_flag （ int flag\_index， bool 启用 ） |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+get\_data\_block\_region\_extent （ ） 常量 |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+get\_data\_block\_size （ ） 常量 |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelGenerator/' target="_blank">体素生成器</a>
+ |   
+get\_normalmap\_generator\_override （ ） 常量 |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+get\_normalmap\_generator\_override\_begin\_lod\_index （ ） 常量 |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+get\_process\_callback （ ） 常量 |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_dictionary.html' target="_blank">字典</a>
+ |   
+get\_statistics （ ） 常量 |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/' target="_blank">体素工具</a>
+ <tr><td>  get\_voxel\_tool （ ） </tr>
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_bool.html' target="_blank">布尔</a>
+ |   
+is\_area\_meshed （ AABB area\_in\_voxels， int lod\_index ） const |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#' target="_blank">无效</a>
+ |   
+save\_modified\_blocks （ ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#' target="_blank">无效</a>
+ |   
+set\_normalmap\_generator\_override （ 体素发生器 generator\_override ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#' target="_blank">无效</a>
+ |   
+set\_normalmap\_generator\_override\_begin\_lod\_index （ 国际 lod\_index ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelLodTerrain/#' target="_blank">无效</a>
+ |   
+set\_process\_callback （ 整数模式 ） |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_vector3i.html' target="_blank">矢量3i</a>
+ |   
+voxel\_to\_data\_block\_position （ Vector3 voxel\_position， int lod\_index ） const |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_vector3i.html' target="_blank">矢量3i</a>
+ |   
+voxel\_to\_mesh\_block\_position （ Vector3 voxel\_position， int lod\_index ） const |<p>
+<h2> 枚举：</h2><p>
+
+ 枚举进程回调：<p>
+<li>    </li><p>
+    PROCESS\_CALLBACK\_IDLE = 0 --<li>节点将用于 <span class="inline_code">_process</span> 在主线程上运行的部分逻辑。</li><p>
+<li>    </li><p>
+    PROCESS\_CALLBACK\_PHYSICS = 1 --<li>节点将用于 <span class="inline_code">_physics_process</span> 在主线程上运行的部分逻辑。</li><p>
+<li>    </li><p>
+    PROCESS\_CALLBACK\_DISABLED = 2 --<li>节点不会更新。谨慎使用！</li><p>
+
+ enum DebugDrawFlag：<p>
+<li>  <b>DEBUG\_DRAW\_OCTREE\_NODES** = **0</b></li><p>
+
+<li>  <b>DEBUG\_DRAW\_OCTREE\_BOUNDS** = **1</b></li><p>
+
+<li>  <b>DEBUG\_DRAW\_MESH\_UPDATES** = **2</b></li><p>
+
+<li>  <b>DEBUG\_DRAW\_EDIT\_BOXES** = **3</b></li><p>
+
+<li>  <b>DEBUG\_DRAW\_VOLUME\_BOUNDS** = **4</b></li><p>
+
+<li>  <b>DEBUG\_DRAW\_EDITED\_BLOCKS** = **5</b></li><p>
+
+<li>  <b>DEBUG\_DRAW\_MODIFIER\_BOUNDS** = **6</b></li><p>
+
+<li>  <b>DEBUG\_DRAW\_FLAGS\_COUNT** = **7</b></li><p>
+<p>
+<h2> 属性描述</h2><p>
+
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>collision\_layer</b>
+ = 1<p>
+  
+生成的碰撞体使用的碰撞层。查看戈多文档以获取更多信息。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>collision\_lod\_count</b>
+ = 0<p>
+  
+设置了多少个 LOD 级别以生成碰撞体，从 LOD 0 开始。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">float</a></li><p>
+ <b>collision\_margin</b>
+ = 0.04<p>
+  
+生成的碰撞器使用的碰撞余量。请注意，这可能取决于引擎盖下使用的物理引擎，因为有些不使用边距。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>collision\_mask</b>
+ = 1<p>
+  
+生成的碰撞体使用的碰撞掩码。查看戈多文档以获取更多信息。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>collision\_update\_delay</b>
+ = 0<p>
+  
+编辑后更新碰撞体之前等待的时间（以毫秒为单位）。碰撞体的生成成本很高，因此目的是使其平滑。<p>
+<li>    </li><p>
+    boolfull\_load\_mode\_enabled = 假<p>
+  
+如果启用，数据流将被关闭，所有体素数据将从VoxelLodTerrain.stream加载到内存中。<p>
+  
+这消除了一些限制，例如能够在任何位置进行编辑，并允许远程法线贴图包含编辑的区域。这是以牺牲更多内存使用为代价的。但是，只有编辑的区域才会使用内存，因此在实践中它就足够好了。<p>
+<li>    </li><p>
+    boolgenerate\_collisions = 真<p>
+  
+如果启用，将从网格生成分块碰撞体。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>lod\_count</b>
+ = 4<p>
+  
+要使用的 LOD 级别数。这应该与VoxelLodTerrain.lod\_distance一起调整：如果你想看得很远，你需要更多的LOD级别。这允许块越远越大，以将其数量保持在可接受的数量。相比之下，LOD 级别太少意味着远处的区域将不得不使用太多的小块，这可能会影响性能。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">float</a></li><p>
+ <b>lod\_distance</b>
+ = 48.0<p>
+  
+LOD 0 从查看器延伸多远。每个父 LOD 的扩展范围将是其子 LOD 级别的两倍。禁用VoxelLodTerrain.full\_load\_mode\_enabled后，这还会定义允许的编辑范围。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">float</a></li><p>
+ <b>lod\_fade\_duration</b>
+ = 0.0<p>
+  
+当设置为大于 0 时，启用 LOD 淡入淡出。当网格块随着细节层次的变化而拆分/合并时，它们会褪色以使过渡不那么明显（或至少更令人愉快）。此功能需要使用特定的着色器，请查看在线文档或示例以获取更多信息。<p>
+<li>   材料材料</li><p>
+
+  
+用于体积表面的材料。此节点的主要用途是平滑体素，这意味着如果您希望在地面上有多个“材质”，则需要将 splatmap 技术与着色器一起使用。此外，许多功能需要着色器才能正常工作。有关详细信息，请查看联机文档或示例。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>mesh\_block\_size</b>
+ = 16<p>
+  
+用于此体积块的网格大小（以体素为单位）。只能设置为 16 或 32。使用 32 有望提高渲染性能，并略微增加编辑成本。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>normalmap\_begin\_lod\_index</b>
+ = 2<p>
+  
+将从中生成详细级别索引法线贴图。此索引下方不会有法线贴图。<p>
+<li>    </li><p>
+    boolnormalmap\_enabled = 假<p>
+  
+支持生成远程法线贴图。此功能仅用于平滑地形 （SDF）。这是一个昂贵的功能，但允许为遥远的地方带来更多细节。<p>
+  
+此功能需要使用特定的着色器，请查看在线文档或示例以获取更多信息。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>normalmap\_max\_deviation\_degrees</b>
+ = 60
+    
+<li>    </li><p>
+    boolnormalmap\_octahedral\_encoding\_enabled = 假
+    <p>
+  
+启用法线贴图的八面体压缩，从而将远距离法线贴图导致的内存使用量减少约 33%，对视觉质量有一定影响。您的着色器可能会相应地修改以对其进行解码。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>normalmap\_tile\_resolution\_max</b>
+ = 8<p>
+  
+远距离法线贴图中切片的最大分辨率。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>normalmap\_tile\_resolution\_min</b>
+ = 4<p>
+  
+远距离法线贴图中切片的最小分辨率。<p>
+  
+这是法线贴图在 VoxelLodTerrain.normalmap\_begin\_lod\_index 中定义的 LOD 级别开始的分辨率。分辨率在每个 LOD 级别加倍，直到达到VoxelLodTerrain.normalmap\_tile\_resolution\_max。<p>
+<li>    </li><p>
+    boolnormalmap\_use\_gpu = 假<p>
+  
+启用 GPU 细节法线贴图生成，从而加快速度。这仅对支持它的生成器有效。Vulkan 是必需的。<p>
+<li>    </li><p>
+    boolrun\_stream\_in\_editor = 真<p>
+  
+VoxelLodTerrain.generator和VoxelLodTerrain.stream将在编辑器中运行的设置。如果包含脚本，此设置可能会自动打开，因为多线程可能会以意外方式与脚本重新加载发生冲突。<p>
+<li>    </li><p>
+    boolthreaded\_update\_enabled = 假<p>
+  
+启用后，此节点将在单独的线程中运行其更新周期的大部分。否则，它将在主线程上运行。<p>
+<li>    </li><p>
+    booluse\_gpu\_generation = 假<p>
+  
+启用 GPU 块生成，从而加快速度。这仅对支持它的生成器有效。Vulkan 是必需的。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>view\_distance</b>
+ = 512<p>
+  
+地形将在查看器周围加载的最大距离。如果您的地形大小是有限的（例如行星），并且您希望将其保留在视图中，则可能需要将此值设置为非常大的数字。这主要适用于无限地形。<p>
+<li>    </li><p>
+    AABBvoxel\_bounds = AABB（-5.36871e+08， -5.36871e+08， -5.36871e+08， 1.07374e+09， 1.07374e+09， 1.07374e+09）<p>
+  
+体积数据可以存在于（加载或不加载）的边界，以体素为单位。默认情况下，它是伪无限的。如果你制作一个行星、岛屿或某种竞技场，你可能想选择一个有限的大小。<p>
+  
+请注意，由于此卷使用具有 LOD 的区块，因此这些边界将捕捉到最近的区块边界。<p>
+<h2> 方法说明</h2><p>
+
+<li>    </li><p>
+    intdebug\_dump\_as\_scene（字符串路径，布尔值include\_instancer）
+    
+<li>    </li><p>
+    intdebug\_get\_data\_block\_count（ ）
+    
+<li>    </li><p>
+    Dictionarydebug\_get\_data\_block\_info（ Vector3 block\_pos， int lod ）
+    
+<li>    </li><p>
+    booldebug\_get\_draw\_flag（ int flag\_index ）
+    
+<li>    </li><p>
+    intdebug\_get\_mesh\_block\_count（ ）
+    
+<li>    </li><p>
+    Dictionarydebug\_get\_mesh\_block\_info（ Vector3 block\_pos， int lod ）
+    
+<li>    </li><p>
+    Arraydebug\_get\_octrees\_detailed（ ）
+    
+<li>    </li><p>
+    booldebug\_is\_draw\_enabled（ ）
+    
+<li>    </li><p>
+    Arraydebug\_print\_sdf\_top\_down（ 矢量3i 中心， 矢量 3i 范围 ）
+    
+<li>    </li><p>
+    Arraydebug\_raycast\_mesh\_block（ 矢量 3 原点， 矢量 3 目录 ）
+    
+<li>    </li><p>
+    voiddebug\_set\_draw\_enabled（启用布尔值）
+    
+<li>    </li><p>
+    voiddebug\_set\_draw\_flag（ int flag\_index， bool 启用 ）
+    
+<li>    </li><p>
+    intget\_data\_block\_region\_extent（ ）
+    
+<li>    </li><p>
+    intget\_data\_block\_size（ ）
+    <p>
+  
+获取一个 cunic 数据块的大小（以体素为单位）。<p>
+<li>    </li><p>
+    VoxelGeneratorget\_normalmap\_generator\_override（ ）
+    
+<li>    </li><p>
+    intget\_normalmap\_generator\_override\_begin\_lod\_index（ ）
+    
+<li>    </li><p>
+    intget\_process\_callback（ ）
+    <p>
+  
+获取用于运行此节点的主线程更新的回调。<p>
+<li>    </li><p>
+    Dictionaryget\_statistics（ ）<p>
+  
+获取有关处理地形所花费的时间的调试信息。<p>
+  
+返回的字典具有以下结构：<p>
+<div class="code_block"><pre><code>{
+    "time_detect_required_blocks": int,
+    "time_request_blocks_to_load": int,
+    "time_process_load_responses": int,
+    "time_request_blocks_to_update": int,
+    "time_process_update_responses": int,
+    "remaining_main_thread_blocks": int,
+    "dropped_block_loads": int,
+    "dropped_block_meshs": int,
+    "updated_blocks": int,
+    "blocked_lods": int
+}
+</code>
+</pre>
+</div><p>
+
+<li>    </li><p>
+    VoxelToolget\_voxel\_tool（ ）<p>
+  
+获取绑定到此卷的 VoxelTool 实例。允许查询和编辑体素。<p>
+<li>    </li><p>
+    boolis\_area\_meshed（ AABB area\_in\_voxels， int lod\_index ）<p>
+  
+如果区域已通过网格划分进行处理，则返回 true。这并不意味着该区域实际上包含网格。<p>
+  
+如果该区域尚未通过网格处理，则返回 false（因此不知道这里是否应该有网格）。<p>
+  
+流式传输地形时，这可用于确定某个区域是否已完全“加载”，以防游戏依赖于网格或网格碰撞体。<p>
+<li>    </li><p>
+    voidsave\_modified\_blocks（ ）<p>
+  
+请求保存所有修改的体素。保存是异步的，将在将来的某个时间完成。如果游戏退出，引擎将确保在应用程序关闭之前完成保存任务。<p>
+  
+目前没有可靠的方法来判断保存是否已完成。<p>
+  
+请注意，当查看器四处移动时卸载的块也可以触发保存任务，独立于此功能。<p>
+<li>    </li><p>
+    voidset\_normalmap\_generator\_override （ 体素发生器 generator\_override ）
+    
+<li>    </li><p>
+    voidset\_normalmap\_generator\_override\_begin\_lod\_index（ int lod\_index ）
+    
+<li>    </li><p>
+    voidset\_process\_callback（ 整型 ）
+    <p>
+  
+设置用于运行此节点的主线程更新的进程回调。默认情况下，它使用 <span class="inline_code">_process</span> .<p>
+<li>    </li><p>
+    Vector3ivoxel\_to\_data\_block\_position（ 矢量3 voxel\_position， int lod\_index ）<p>
+  
+将体素位置转换为特定 LOD 索引的数据块位置。<p>
+<li>    </li><p>
+    Vector3ivoxel\_to\_mesh\_block\_position（ 矢量3 voxel\_position， int lod\_index ）<p>
+  
+将体素位置转换为特定 LOD 索引的网格块位置。<p>
+_  
+生成于 Oct 02， 2023_
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>块状地形</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<h1>块状地形</h1><p>
+<p>
+本页更详细地关注块状地形、类似 Minecraft 或由立方体制成的地形。<p>
+<h2>  <span class="inline_code">VoxelMesherBlocky</span> 使用模型</h2><p>
+<p>
+此网格器将与模型 ID 对应的小网格组合成块。它剔除相互遮挡的面，但不进行贪婪的网格划分。这与Minecraft中使用的技术类似。<p>
+
+此网格器使用的体素数据可以存储在<span class="inline_code">VoxelBuffer.CHANNEL_TYPE</span>通道中。<p>
+<h3> 创建体素模型</h3><p>
+
+这种网格器具有  <span class="inline_code">VoxelBlockyLibraryBase</span> 类型的 <span class="inline_code">library</span>属性。这是一个资源，其中包含要用于构建体素网格的所有模型的列表：草、泥土、木材、树叶、水、灌木、楼梯、门部件等。<p>
+您可以就地创建新库，或者如果要在多个位置重复使用，则可以将库保存到文件中。您也可以从代码创建它。<p>
+
+可以使用两种类型的库：<p>
+<li>    </li><p>
+    <span class="inline_code">VoxelBlockyLibrary</span> ：模型的简单列表，其中列表中的索引对应于要在体素数据中使用的 ID。
+<li>    </li><p>
+    <span class="inline_code">VoxelBlockyTypeLibrary</span> ：存储 列表 <span class="inline_code">VoxelBlockyType</span> 的更高级别的库。这是一个类似于 Minecraft 工作的实验性工作流程，稍后将对此进行解释。<p>
+
+更容易 <span class="inline_code">VoxelBlockyLibrary</span> 开始使用 。<p>
+<img src='./块状地形.assets/voxel_library_voxels_list.webp' alt="Screenshot of the list of voxels in VoxelBlockyLibrary" /><p>
+<p>
+每个插槽可以包含一个 <span class="inline_code">VoxelBlockyModel</span> 资源。左侧显示的索引将是他们在体素数据中使用的 ID。体素是一种特例：按照惯例，它可以用作默认的“空气”体素 <span class="inline_code">0</span> 。您可以为每个插槽分配一个新 <span class="inline_code">VoxelBlockyModel</span> 资源，并填写其属性。<p>
+
+使用默认的 16 位体素数据，您最多可以创建 65,536 个模型。<p>
+ 警告<p>
+
+为了允许从旧版本的模块进行转换，可以实例化， <span class="inline_code">VoxelBlockyModel</span> 这意味着检查器和脚本可以创建它。但是，这实际上不是预期的。不应创建 的 <span class="inline_code">VoxelBlockyModel</span> 实例，而应使用其派生类。<p>
+<h3> 立方体</h3><p>
+<p>
+有几种模型。最简单的是 <span class="inline_code">VoxelBlockyModelCube</span> ，它渲染一个在其侧面具有特定纹理的立方体。<p>
+
+使用 <span class="inline_code">VoxelMesherBlocky</span> ，建议使用纹理图集，以允许重复使用材质并减少绘制调用的次数。您可以创建一个包含体素可以使用的所有图块的纹理。例如，这是块状游戏演示中的一个：<p>
+<img src='./块状地形.assets/blocky_game_atlas.webp' alt="Atlas used in the blocky game demo" /><p>
+<p>
+此图集是方形纹理，最多可以包含 16x16 个图块。此数字很重要，需要在 <span class="inline_code">atlas_size_in_tiles</span> 属性上 <span class="inline_code">VoxelBlockyModelCube</span> 设置，以便可以正确生成纹理坐标。<p>
+
+立方体模型的每个面上可以有不同的图块。您可以通过在 <span class="inline_code">Cube tiles</span> 类别下分配 的属性 <span class="inline_code">Voxel</span> 来决定使用哪一个。此处的坐标以图块为单位，而不是像素。<p>
+<img src='./块状地形.assets/voxel_cube_tiles_properties.webp' alt="Voxel cube tile properties screenshot" /><p>
+<p>
+例如，如果要使用“木板”图块，则可以使用 x=3 和 y=1：<p>
+<img src='./块状地形.assets/cube_tile_coordinates.webp' alt="Tile coordinates" /><p>
+<p>
+到目前为止，我们定义了一个立方体素，其面上有特定的纹理坐标，但我们仍然需要实际分配用于渲染它的纹理和材质。这可以在该 <span class="inline_code">Material overrides</span> 部分中完成，您可以在其中指定带有纹理的材质。<p>
+
+确保将其 <span class="inline_code">albedo_texture</span> 分配给您的纹理。您也可以检查该 <span class="inline_code">Vertex Color/Use as albedo</span> 属性，因为这将允许网格器在立方体边缘烘烤环境光遮蔽。<p>
+<img src='./块状地形.assets/material_blocky_game.webp' alt="Material for blocky terrain" /><p>
+<p>
+每个模型都可以使用具有不同纹理的不同材质，但请记住，重复使用材质越多越好。它减少了绘制调用的数量，并使渲染速度更快。<p>
+
+请注意，应用材质有几个级别，每个级别都覆盖另一个级别： <li>网格上存在的材质是默认材质（如果您明确使用网格） - 上指定的材质将覆盖网格材质 - 上 <span class="inline_code">VoxelBlockyModel</span> <span class="inline_code">VoxelTerrain</span> 指定的材质将覆盖所有库材质</li><p>
+
+<h3> 网格</h3><p>
+<p>
+使用 <span class="inline_code">Cube</span> 几何体创建体素类型是可用于简单体素的快捷方式，但最通用的工作流程是使用实际网格。如果使用 <span class="inline_code">VoxelBlockyModelMesh</span> ，则可以改为分配网格资源。这些 <span class="inline_code">Cube tiles</span> 属性不可用，因为您必须在 3D 建模器（如 Blender）中分配网格的纹理坐标。<p>
+<img src='./块状地形.assets/blender_block_uv_mapping.webp' alt="Blender screenshot for UV editing a block" /><p>
+<p>
+网格可以具有您想要的任何形状，但是需要遵守一些约束：<p>
+<li>    </li><p>
+    网格的原点应该是它的下角。
+<li>    </li><p>
+    Blender的坐标系是Z-up，但Godot是Y-up。确保您导出的网格在导入 Godot 后不会进入负坐标。
+<li>    </li><p>
+    顶点最好位于 0~1 范围内，在所有方向上
+<li>    </li><p>
+    保持low-poly。网格器可以处理大型模型，但如果复杂模型出现很多次，性能会迅速下降。
+<li>    </li><p>
+    位于 1x1x1 单元立方体侧面的面将是唯一可以被网格划分器剔除的面。确保它们完美排列。如果不这样做，则由于生成的几何体数量未被剔除，可能会导致速度急剧下降。<p>
+<img src='./块状地形.assets/blender_face_cube_side.webp' alt="Blender screenshot for face lining up with cube side" /><p>
+<p>
+用于导出网格的最佳格式是 OBJ。 Godot 默认将此格式作为网格资源导入。其他格式不适合，因为Godot将它们作为场景导入，而 <span class="inline_code">VoxelBlockyModelMesh</span> 资源需要网格，而不是场景。您也可以选择从此处导出材质，但建议在Godot中进行，因为它允许您重复使用它们。<p>
+ 注意<p>
+
+每个模型中都可以使用第二种材质。如果给定网格同时需要透明和不透明部件，这将非常有用。这像往常一样工作，通过具有两个表面的网格。但是，无论如何，面剔除仍将使用模型的属性。例如，如果模型具有不透明的边，并且在中间是透明的，则可以将其定义为非透明块，因此当放置在其他不透明块旁边时，其边的几何形状将被剔除。有关详细信息，请参阅（透明度）\[#transparency\]部分。<p>
+<h3>  </h3><p>
+<h2>体素模型 ID 的使用</h2><p>
+<p>
+在 <span class="inline_code">VoxelBlockyLibrary</span> 中定义的体素 ID 就像瓦片地图中的图块：对于简单的游戏，它们可以直接对应于一种块类型。但是，随着时间的推移，您可能希望避免以这种方式直接对待它们。相反，您可以定义自己的块类型列表，每种类型可以对应于一个或多个 <span class="inline_code">VoxelBlockyModel</span> ID。<p>
+
+来自 Minecraft 的示例：<p>
+<li>    </li><p>
+    楼梯可以放置在不同的方向，有时具有不同的外观。这些实际上是多个体素 ID。
+<li>    </li><p>
+    作物可以有几个生长阶段。对于相同类型的块，每个阶段都是不同的体素 ID。
+<li>    </li><p>
+    一扇门实际上由 2 个体素组成。它的顶部和底部。如果我们考虑打开和关闭的门，可能会有更多。
+<li>    </li><p>
+    一条轨道可以对应于许多不同的体素：直线轨道、坡度和转弯。它们都是导轨，但子配置不同。<p>
+
+管理“游戏块”ID 和体素 ID 之间的对应关系由您决定。<p>
+<h3> 旋转模型</h3><p>
+<p>
+目前，不支持自动旋转或翻转体素，因此您必须为某种类型的体素创建可能需要的每个旋转版本。但是，可以使用检查器中的旋转按钮在编辑器中创建这些模型变体：<p>
+<img src='./块状地形.assets/model_preview_with_rotation_buttons.webp' alt="Model preview in inspector with rotation buttons" /><p>
+<p>
+这些按钮不是用于预览的，它们实际上是旋转模型的，当放置在游戏中时，它将出现在该旋转中。<p>
+<h3> 透明度 </h3><p>
+<p>
+您可能希望某些体素类型是透明的。实际上有两种主要方法可以实现此目的：<p>
+<li>    </li><p>
+    使用 Alpha 剪辑：丢弃透明像素，允许通过不透明通道进行渲染，从而避免透明表面的一些典型问题。
+<li>    </li><p>
+    Alpha 混合：实际透明度，当多个透明表面彼此呈现时有一些限制<p>
+
+两者都需要使用与您可能使用的默认材料不同的材质。请注意，如果您使用纹理图集，则典型设置只需要使用相同图集的 3 种材质：不透明、Alpha 剪辑和透明。<p>
+
+<span class="inline_code">VoxelBlockyModel</span> 资源也具有 <span class="inline_code">transparency_index</span> 属性。此属性允许调整两个体素如何遮挡其面部。例如，假设您有两个透明的体素，玻璃和树叶。默认情况下，如果您将它们并排放置，它们共享的面将被剔除，从而允许您从玻璃块上看到叶子：<p>
+<img src='./块状地形.assets/transparency_index_example1.webp' alt="Screenshot of transparency index not being exploited" /><p>
+<p>
+如果两个面相互接触，如果它们具有相同的透明度指数，它们可能会被剔除。但如果它们的透明度指数不同，他们可能不会。这允许直接看到玻璃后面的叶子，而不是看到内部。<p>
+
+在这里，玻璃 的<span class="inline_code">transparency_index=2</span>，叶子的 <span class="inline_code">transparency_index=1</span> ：<p>
+<img src='./块状地形.assets/transparency_index_example2.webp' alt="Screenshot of transparency index being exploited" /><p>
+<p>
+<span class="inline_code">VoxelBlockyModel</span> 还有一个 <span class="inline_code">culls_neighbors</span> 属性。此功能默认处于启用状态，可防止不必要地渲染相邻体素侧。但是，对于某些透明体素，可能更可取的是始终渲染相邻的体素侧。例如，如果所有内部体素侧都可见，则可以使植物看起来更密集。<p>
+
+这是一组叶子（ <span class="inline_code">culls_neighbors=true</span> 默认值）：<p>
+<img src='./块状地形.assets/culls_neighbors_enabled.webp' alt="Screenshot of leaves with culls_neighbors set to true" /><p>
+<p>
+这是同一组叶子与 <span class="inline_code">culls_neighbors=false</span> .体素之间的两侧被渲染，使这组叶子看起来不那么空心。<p>
+<img src='./块状地形.assets/culls_neighbors_disabled.webp' alt="Screenshot of leaves with culls_neighbors set to false" /><p>
+
+<h3> 随机报价</h3><p>
+<p>
+<span class="inline_code">VoxelBlockyModel</span> 具有名为 <span class="inline_code">random_tickable</span> 的属性。这是用于非常具体的功能 <span class="inline_code">VoxelToolTerrain</span> ： run\_blocky\_random\_tick<p>
+<h2>  使用<span class="inline_code">VoxelMesherBlocky</span> 类型</h2><p>
+
+ 警告<p>
+
+此功能是实验性的，可能存在错误、缺少部件，并且可能会随着时间的推移而更改。它提出了一种组织游戏模型的方法，并自动化了一些事情，但如果你想以自己的方式处理它，你仍然可以使用 <span class="inline_code">VoxelBlockyLibrary</span> 。另请参阅Github上的相应问题。<p>
+
+存在替代库类型 <span class="inline_code">VoxelBlockyTypeLibrary</span> 。它不是直接包含模型列表，而是包含 . <span class="inline_code">VoxelBlockyType</span> 类型更接近游戏中所谓的“块类型”，并且该系统的设计与Minecraft中的块定义方式非常相似（灵感来自 https://docs.minecraftforge.net/en/1.19.2/blocks/states/）。<p>
+<h3> 属性</h3><p>
+<p>
+一个类型可以有几个 <span class="inline_code">VoxelBlockyAttribute</span> .每个属性都类似于一个表示类型状态的变量。它们可能是原木的方向，按下或不按下的按钮，门的顶部或底部的块，与邻居的连接或作物的生长水平。<p>
+
+类型通常应该具有很少的属性，并且每个属性也可以只接受几个值（介于 0 和 255 之间）。此限制与体素的轻量级性质有关，您不能将太多内容存储到单个体素中，否则它会失去成为具有数百万体素的地形一部分的能力。如果您需要一个块具有更复杂的状态，例如对象和事物列表，则此系统可能不适用于您的情况，您将不得不回退使用体素元数据和实际节点（如 Minecraft 中的实体）。<p>
+<h3> 变体模型</h3><p>
+<p>
+将属性分配给类型后，检查器将显示每个状态组合的模型列表：<p>
+<img src='./块状地形.assets/type_variant_models.webp' alt="Variant models list" /><p>
+<p>
+您还可以使用检查器顶部文字 3D 预览旁边的侧面板预览组合。<p>
+
+如果有许多属性或许多状态，则此列表可能会变得非常大。在《我的世界》中，红石尘在技术上有 1,296 种型号变体。因此，它不是使用变体列表，而是使用模型的条件组合。将来可能会实现类似的功能。<p>
+<h3> 旋转</h3><p>
+<p>
+属性的一个非常常见的用途是旋转。如果您使用内置的旋转属性，则自动生成旋转模型的情况 <span class="inline_code">VoxelBlockyType</span> 非常普遍：<p>
+<li>  <span class="inline_code">VoxelBlockyAttributeAxis</span></li><p>
+<li>  <span class="inline_code">VoxelBlockyAttributeDirection</span></li><p>
+<li>  <span class="inline_code">VoxelBlockyAttributeRotation</span></li><p>
+<p>
+每个旋转属性都带有默认旋转，您可以像设计具有该旋转一样设计模型，以便可以正确生成每隔一个旋转。<p>
+
+由于这些变体是自动生成的，因此它们不会显示在检查器中，但它们会像其他变体一样在内部存储。<p>
+ 注意<p>
+
+它可能很诱人地用于 <span class="inline_code">VoxelBlockyAttributeRotation</span> 所有内容，但它的变体数量最多。引擎必须为每个组合生成预旋转模型，因此内存成本很高。同样，如果不需要某些旋转，请考虑更改这些属性的属性（可以排除垂直旋转）。<p>
+<h3>  </h3>
+型号名称和数字 ID <p>
+类型和属性的名称很重要。它们用于以以下形式唯一标识模型：<p>
+<div class="code_block"><pre><code>&lt;type_name&gt;[attribute1=value,attribute2=value,...]
+</code>
+</pre>
+</div><p>
+<p>
+例如，可以将特定体素标识为 <span class="inline_code">button[direction=up,pressed=yes]</span> 。如果重命名、删除或添加导致此标识符更改的属性，它将有效地成为不同的体素，并可能被赋予不同的 ID。这意味着，如果您有一个使用旧名称保存的世界，则在更改类型后这些名称将不会显示。<p>
+
+类型可以对应于一个或多个具有不同数字 ID 的模型。与 相反 <span class="inline_code">VoxelBlockyLibrary</span> ，您不会选择这些 ID。它们是根据您提供给每种类型的所有属性的所有组合自动生成的。类型具有的属性和状态越多，为其保留的模型 ID 就越多。<p>
+
+烘焙特定模型后，其名称和属性状态将与特定的数字 ID 相关联。<p>
+
+数字 ID 不是手动分配的一个原因，首先是因为当你有很多类型时，不出错是很乏味的，但也因为修改。在 Minecraft 中，与其他世界相比，每个世界的每个体素可能具有不同的数字 ID，因为资源包和模组可能会添加不同的模型。添加或删除模组不应使 ID 相互冲突。最后，唯一标识模型的不是数字 ID。而是使用类型和属性名称。类型名称甚至可以使用类似 <span class="inline_code">minecraft:flower</span> 和 的 <span class="inline_code">mymod:thingy</span> 语法进行命名空间。<p>
+
+数字 ID 仅在特定世界中是唯一的。它们用于存储体素数据并通过网络发送，这更有效，但不能跨不同世界移植。<p>
+
+数字 ID 和名称与我们可以称之为“ID 映射”的内容映射。您可以通过单击 <span class="inline_code">Inspect model IDs</span> 检查器 <span class="inline_code">VoxelBlockyTypeLibrary</span> 中最底部的 来查看生成的 ID 列表。<p>
+<h3> 脚本中的用法</h3><p>
+<p>
+处理体素数据时，您仍然需要使用 获取 <span class="inline_code">VoxelTool</span> 和设置模型 ID，因为这是体素实际存储的内容。如果给定类型的体素需要更改状态，这意味着它将值更改为另一个模型 ID，就像您在基于经典 <span class="inline_code">VoxelBlockyLibrary</span> 的游戏中所做的那样。<p>
+
+<span class="inline_code">VoxelBlockyTypeLibrary</span> 具有从类型名称及其每个属性的值获取模型 ID 的函数，反之亦然。如果大量需要特定 ID，请考虑将它们缓存在局部变量中以提高性能。<p>
+
+使用 <span class="inline_code">StringName</span> 类型名称和属性名称代替 <span class="inline_code">String</span> ，这与其他名称进行比较的效率更高一些。因此，您需要使用以下特定 <span class="inline_code">&</span> 语法：<p>
+<div class="code_block"><pre><code>var model_id := library.get_model_index_with_attributes(&amp;"button",
+    # 请注意，字典键不使用“&amp;”，因为Godot将StringName键转换为String。
+    {
+        "direction": VoxelBlockyAttributeDirection.DIR_POSITIVE_X,
+        "active": 1,
+        "powered": 0
+    })
+</code>
+</pre>
+</div><p>
+<p>
+如果类型只有一个属性，则可以使用更快的快捷方式：<p>
+<div class="code_block"><pre><code>var model_id := library.get_model_index_single_attribute(&amp;"log", VoxelBlockyAttributeAxis.AXIS_Z)
+</code>
+</pre>
+</div><p>
+<p>
+如果类型没有属性，或者您只需要其默认状态：<p>
+<div class="code_block"><pre><code>var model_id := library.get_model_index_default(&amp;"leaves")
+</code>
+</pre>
+</div><p>
+
+<h2><span class="inline_code">VoxelMesherCubes</span></h2><p>
+<p>
+该网格器专门生成具有特殊颜色的立方体。<p>
+<h2>快速碰撞替代方案</h2><p>
+
+<h3> 移动和滑动</h3><p>
+<p>
+基于网格的碰撞在Godot中非常准确且功能丰富，但是它有一些缺点：<p>
+<li>    </li><p>
+    每次修改地形时都必须构建Trimesh碰撞形状，这非常慢。
+<li>    </li><p>
+    物理引擎必须处理玩家附近的任意三角形，这不能利用特定情况，例如一切都是立方体。
+<li>    </li><p>
+    有时您可能还想要一个更简单、更面向游戏的碰撞系统<p>
+
+该 <span class="inline_code">VoxelBoxMover</span> 类提供了一个类似 Minecraft 的碰撞系统，该系统的使用方式与 <span class="inline_code">move_and_slide()</span> .它更有限，但速度极快，不受隧道的影响。<p>
+
+下面的代码显示了如何使用它，但有关完整代码，请参阅块状演示。<p>
+<div class="code_block"><pre><code>var box_mover = VoxelBoxMover.new()
+var character_box  = AABB(Vector3(-0.4, -0.9, -0.4), Vector3(0.8, 1.8, 0.8))
+var terrain = get_node("VoxelTerrain")
+
+func _physics_process(delta):
+    # …此处显示设置速度的输入命令。。。
+
+    # 应用地形碰撞
+    var motion : Vector3 = velocity * delta
+    motion = box_mover.get_motion(get_translation(), motion, character_box, terrain)
+    global_translate(motion)
+    velocity = motion / delta
+</code>
+</pre>
+</div><p>
+<p>
+这种技术主要适用于使用 <span class="inline_code">VoxelMesherBlocky</span> ，因为它从使用它的 <span class="inline_code">VoxelBlockyLibrary</span> 块中获取有关哪个块可碰撞的信息。不过，它可能在其他网格器中有一些有限的支持。<p>
+
+如果使用 <span class="inline_code">VoxelMesherBlocky</span> ，它将使用资源中 <span class="inline_code">VoxelBlockyModel</span> 指定的 AABB 列表。如果列表为空，则体素不会发生冲突。还可以通过分配 <span class="inline_code">collision mask</span> 的属性 <span class="inline_code">VoxelBoxMover</span> 来过滤掉某些冲突。这将与资源上 <span class="inline_code">VoxelBlockyModel</span> 找到 <span class="inline_code">collision mask</span> 的属性匹配。<p>
+<h3> 光线投射</h3><p>
+<p>
+还存在另一种光线投射函数，该函数返回特定于体素的结果。如果您也关闭了经典碰撞，这可能会很有用。这可以通过 <span class="inline_code">VoxelTool</span> 类访问。可以使用 获得 <span class="inline_code">get_voxel_tool()</span> 绑定到地形的实例。<p>
+<div class="code_block"><pre><code>var terrain : VoxelTerrain = get_node("VoxelTerrain")
+var vt : VoxelTool = terrain.get_voxel_tool()
+var hit = vt.raycast(origin, direction, 10)
+
+if hit != null:
+    # 返回的位置在体素坐标中，可用于使用“VoxelTool”的其他功能访问体素的值`
+    print("Hit voxel ", hit.position)
+</code>
+</pre>
+</div><p>
+<p>
+如果使用 <span class="inline_code">VoxelMesherBlocky</span> ，则可以通过指定 <span class="inline_code">collision mask</span> 参数来过滤掉某些体素类型。这将与资源上 <span class="inline_code">VoxelBlockyModel</span> 找到 <span class="inline_code">collision mask</span> 的属性匹配。
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

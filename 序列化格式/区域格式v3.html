@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>区域格式v3</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<h1>区域格式v3</h1><p>
+
+ 版本： 3<p>
+  
+区域文件允许以适合频繁流式传输和部分编辑的格式保存大型固定大小的 3D 体素体积。这种格式的灵感来自仙女座种子和我的世界。它由 使用 <span class="inline_code">VoxelStreamRegionFiles</span> ，在此C++文件中实现<p>
+  
+存在两个用例： <li>独立区域：固定大小的体素体积 - 区域森林：将多个区域文件用于无限的体素世界，没有边界。这曾经是唯一用于案例区域文件。</li><p>
+
+ 注意<p>
+  
+本文档中的“区域”名称不指定标准，而是一种方法。这里描述的格式特定于Godot模块，可以称为 <span class="inline_code">Godot Voxel VXR</span> 需要全名。<p>
+<h2> 迁移</h2><p>
+
+  
+使用此格式进行的较旧保存如果使用版本 2，则可以迁移这些保存。<p>
+<h3>  </h3><p>
+版本 3 中的更改<p>
+  
+添加了有关块大小、体素格式和调色板的信息，以便独立区域文件包含加载和保存体素数据所需的所有信息。以前，用户必须事先知道此信息。迁移将插入额外的字节并偏移文件的其余部分，并将写入新的标头。<p>
+<h2> 坐标空间</h2><p>
+
+  
+本文档使用 3 个不同的坐标空间。每个都可以通过使用乘数转换为另一个。<p>
+<li>    </li><p>
+    体素坐标：体素在空间中的实际位置
+<li>    </li><p>
+    块坐标：具有定义大小 B 的体素块的位置。例如，常见的块大小为 16x16x16 体素。块坐标可以通过将其乘以 B 转换为体素坐标，从而给出该块内的原点体素。
+<li>    </li><p>
+    区域坐标：具有定义大小 R 的块区域的位置。区域坐标可以通过将其乘以 R 转换为块坐标，从而得到该区域内的原点块。<p>
+  
+2的幂可以用作乘数。<p>
+<h2> 区域林</h2><p>
+
+<h3> 文件系统结构</h3><p>
+
+  
+区域林组织在多个区域文件中，并包含在包含它们的根目录中。区域文件不需要位于林内即可使用。在该目录下，位于两件事：<p>
+<li>   一个 <span class="inline_code">meta.vxrm</span> 文件</li><p>
+<li>   目录 <span class="inline_code">regions</span></li><p>
+
+  
+在区域目录下，每个详细级别 （LOD） 都必须有一个子目录。这些文件夹必须命名 <span class="inline_code">lodX</span> 为 ，其中 <span class="inline_code">X</span> 是 LOD 索引，从 开始 <span class="inline_code">0</span> 。<p>
+  
+然后，详细级别文件夹包含该详细级别的区域文件。每个区域文件使用以下约定命名： <span class="inline_code">r.X.Y.Z.vxr</span> ，其中 X、Y 和 Z 是区域坐标空间中区域的坐标。<p>
+<li>  <span class="inline_code">world/</span></li><p>
+    <li>  <span class="inline_code">meta.vxrm</span></li><p>
+    <li>  <span class="inline_code">regions/</span></li><p>
+        <li>  <span class="inline_code">lod0/</span></li><p>
+            <li>  <span class="inline_code">r.0.0.0.vxr</span></li><p>
+            <li>  <span class="inline_code">r.1.6.0.vxr</span></li><p>
+            <li>  <span class="inline_code">r.32.-2.-6.vxr</span></li><p>
+            <li>  ...</li><p>
+        <li>  <span class="inline_code">lod1/</span></li><p>
+            <li>  ...</li><p>
+        <li>  <span class="inline_code">lod2/</span></li><p>
+            <li>  ...</li><p>
+        <li>  ...</li><p>
+
+<h3> 元文件</h3><p>
+
+  
+根目录下的元文件包含有关所有体素数据的全局信息。它当前正在使用 JSON，但可能无法手动编辑。<p>
+  
+它必须包含以下字段：<p>
+<li>    </li><p>
+    <span class="inline_code">version</span> ：表示该格式版本的整数。一定是 <span class="inline_code">3</span> .可能会迁移旧版本。
+<li>    </li><p>
+    <span class="inline_code">block_size_po2</span> ：体素中块的大小，作为 2 的整数幂（4 表示 16,5 表示 32 等）。块始终是立方体的。
+<li>    </li><p>
+    <span class="inline_code">lod_count</span> ：LOD关卡有多少个。将有同样多的 LOD 文件夹。它必须大于 0。
+<li>    </li><p>
+    <span class="inline_code">region_size_po2</span> ：以块为单位的区域大小，作为 2 的整数幂（4 表示 16,5 表示 32 等）。区域始终是立方体的。
+<li>    </li><p>
+    <span class="inline_code">sector_size</span> ：区域文件中扇区的大小，作为严格正整数。有关详细信息，请参阅区域格式。
+<li>    </li><p>
+    <span class="inline_code">channel_depths</span> ：8 个整数的数组，表示每个体素通道的位深度：
+    <li>    <span class="inline_code">0</span> ： 8 位</li><p>
+    <li>    <span class="inline_code">1</span> ： 16 位</li><p>
+    <li>    <span class="inline_code">2</span> ： 32 位</li><p>
+    <li>    <span class="inline_code">3</span> ： 64 位</li><p>
+    <li>    </li><p>
+        有关详细信息，请参阅块格式。<p>
+<h2> 区域文件</h2><p>
+
+  
+区域文件是二进制的，小端序。它们由序言、标题和扇区数据组成。<p>
+<div class="code_block"><pre><code>Prologue:
+- "VXR_"
+- version: uint8_t
+Header:
+- block_size_po2: uint8_t // cubic size of the block as a power of two. Must not be zero.
+- region_size_x: uint8_t // How many blocks the region spans across X
+- region_size_y: uint8_t // How many blocks the region spans across Y
+- region_size_z: uint8_t // How many blocks the region spans across Z
+- channel_depths: uint8_t[8] // Channel depths, same as described in region forest meta files
+- sector_size: uint16_t
+- palette_hint: uint8_t
+- palette: uint32_t[256]
+- blocks: uint32_t[region_size ^ 3]
+SectorData:
+- ...
+</code>
+</pre>
+</div><p>
+
+<h3> 序幕</h3><p>
+
+  
+它以四个 8 位字符开头： <span class="inline_code">VXR_</span> ，后跟一个字节，表示二进制形式的格式版本。版本必须是 <span class="inline_code">3</span> 。<p>
+  
+标头以描述体积大小和体素格式的一些元数据开头。它不再具有固定大小。<p>
+  
+可以选择提供调色板。如果设置为 <span class="inline_code">0xff</span> （ <span class="inline_code">255</span> ），则必须 <span class="inline_code">palette_hint</span> 后跟 256 个 8 位 RGBA 值。如果为 <span class="inline_code">0x00</span> （ <span class="inline_code">0</span> ），则 <span class="inline_code">palette_hint</span> 后面不会有调色板数据。其他值目前无效。<p>
+  
+<span class="inline_code">blocks</span> 是 32 位整数序列，位于标头的末尾。每个整数表示有关块在文件中的位置及其序列化数据的大小的信息。该序列的计数是一个区域可以包含的块数，对于给定的区域大小保持不变。该序列中元素的索引是根据 3D 块位置按 ZXY 顺序计算的。块的索引可以使用公式 <span class="inline_code">y + block_size * (x + block_size * z)</span> 获得。每个整数包含两个信息： <li>第一个字节是块跨越的扇区数。获得为 <span class="inline_code">n & 0xff</span> .- 其他 3 个字节是第一个扇区的索引。获得为 <span class="inline_code">n >> 8</span> .</li><p>
+
+  
+因此，如果块未被占用，则其值为 <span class="inline_code">0</span> 。<p>
+<h3> 扇区</h3><p>
+
+  
+文件的其余部分被扇区占用。扇区是固定大小的数据块。它们的大小由前面描述的标头确定，如果属于区域林，则在元文件中确定。块存储在这些扇区中。一个块可以跨越一个或多个扇区。以这种方式对文件进行分区，以允许频繁写入可变大小的块，而不必经常移动连续的内容。<p>
+  
+当我们需要加载一个区块时，区块信息开始的地址如下：<p>
+<div class="code_block"><pre><code>header_size + first_sector_index * sector_size
+</code>
+</pre>
+</div><p>
+
+  
+一旦我们有了块的地址，这个地址的前 4 个字节将包含写入数据的大小。注意：确定占用扇区数时，这 4 个字节包含在总块大小中。<p>
+<div class="code_block"><pre><code>RegionBlockData
+- buffer_size: uint32_t
+- buffer
+</code>
+</pre>
+</div><p>
+
+  
+可以使用块格式读取获得的缓冲区。<p>
+<h2> 块格式</h2><p>
+
+ 请参阅块格式<p>
+<h2> 当前问题</h2><p>
+
+  
+尽管此格式当前已实现且可用，但它存在已知问题。<p>
+<h3> 恩迪亚斯</h3><p>
+
+  
+Godot's <span class="inline_code">encode_variant</span> 似乎并不关心跨架构的字节序，因此将来可能会成为一个问题并更改为自定义格式。该规范的其余部分不受此影响，并假设我们使用小端序，但是块通道的实现目前也没有考虑这一点。这可能会在以后的迭代中得到优化。<p>
+<h3> 版本控制</h3><p>
+
+  
+区域格式应被视为块格式实例的容器。前者有版本号，但后者没有，这很难管理。我们可能会引入单独的版本控制，这将导致较旧的存档变得不兼容。<p>
+  
+用户版本控制也可以作为第三层添加：如果游戏需要用新的元数据替换一些元数据，或者由于游戏的变化而交换体素 ID，则需要公开一个钩子来迁移旧版本。
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

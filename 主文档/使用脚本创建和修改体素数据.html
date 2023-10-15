@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>使用脚本创建和修改体素数据</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<h1>使用脚本创建和修改体素数据</h1><p>
+<p>
+本页显示了如何使用脚本 API 的一些示例。<p>
+<h2> 编辑地形</h2><p>
+
+<h3> 使用VoxelTool</h3><p>
+
+<span class="inline_code">VoxelTool</span> 是用于访问和修改体素数据的简化 API。可以使用该 <span class="inline_code">get_voxel_tool()</span> 函数从存储体素的任何类中获取一个。该函数将返回一个 <span class="inline_code">VoxelTool</span> 绑定到您从中获取它的卷。<p>
+
+有关可用功能，请参阅体素工具。请注意，根据您从哪个类获取它，的 <span class="inline_code">VoxelTool</span> 子类可能具有更专业的函数。<p>
+
+可以在成员变量中存储对的引用，以防您想多次访问来自同一卷的 <span class="inline_code">VoxelTool</span> 体素。它更有效，因为每次调用都会 <span class="inline_code">get_voxel_tool()</span> 创建它的新实例。<p>
+
+在开始修改体素之前，请确保您访问了正确的通道。<p>
+<div class="code_block"><pre><code># 如果你使用VoxelMesherBlocky
+voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
+</code>
+</pre>
+</div><p>
+
+<div class="code_block"><pre><code># 如果你使用VoxelMesherTransvoxel
+voxel_tool.channel = VoxelBuffer.CHANNEL_SDF
+</code>
+</pre>
+</div><p>
+
+<div class="code_block"><pre><code># 如果你使用VoxelMesherCubes
+voxel_tool.channel = VoxelBuffer.CHANNEL_COLOR
+</code>
+</pre>
+</div><p>
+
+<h3> 边界限制</h3><p>
+<p>
+当地形流入和流出块时，无法编辑过去加载的边界。要么你会收到错误，要么什么都不会发生。您可以通过调用 <span class="inline_code">VoxelTool.is_area_editable()</span> 来测试要访问或编辑的区域是否可用。<p>
+<h3> 详细级别限制</h3><p>
+<p>
+与边界限制类似，将 LOD 与 一起使用 <span class="inline_code">VoxelLodTerrain</span> 时，无法访问或编辑超出第一个 LOD 级别的体素。超过此级别后，体素数据不再以全分辨率提供。<p>
+<h3> 编辑性能</h3><p>
+<p>
+通常，逐个编辑体素是最慢的。实际上只获取几个是可以的，但是如果您计划一次修改更大的区域，您可能更喜欢批量执行此操作的函数，或者复制/粘贴缓冲区。<p>
+
+请参阅访问体素和多线程<p>
+<h2> 自定义生成器</h2><p>
+
+您可以通过在 GDScript、C<h1>或 C++ 中扩展 <span class="inline_code">VoxelGeneratorScript</span> 来提供自己的体素生成器。</h1><p>
+
+<hr><p>
+<b>注意</b><p>
+
+自定义生成器也可以在没有脚本的情况下使用VoxelGeneratorGraph<p>
+<hr><p>
+<h3> 示例</h3><p>
+<p>
+以下是使裸骨发电机可用于块状地形的方法。确保用作 <span class="inline_code">VoxelMesherBlocky</span> 网格器。<p>
+
+创建包含以下内容的独立脚本 <span class="inline_code">my_generator.gd</span> ：<p>
+<div class="code_block"><pre><code>extends VoxelGeneratorScript
+
+const channel : int = VoxelBuffer.CHANNEL_TYPE
+
+func _get_used_channels_mask() -&gt; int:
+    return 1 &lt;&lt; channel
+
+func _generate_block(buffer : VoxelBuffer, origin : Vector3i, lod : int) -&gt; void:
+    if lod != 0:
+        return
+    if origin.y &lt; 0:
+        buffer.fill(1, channel)
+    if origin.x == origin.z and origin.y &lt; 1:
+        buffer.fill(1, channel)
+</code>
+</pre>
+</div><p>
+<p>
+在地形场景中，向节点添加另一个脚本，该脚本将在游戏开始时设置生成器。代码可能会有所不同，具体取决于您构建场景的方式。<p>
+<div class="code_block"><pre><code>const MyGenerator = preload("my_generator.gd")
+
+# 获取地形
+var terrain = $VoxelTerrain
+
+func _ready():
+    terrain.generator = MyGenerator.new()
+</code>
+</pre>
+</div><p>
+<p>
+确保场景中的摄像机下方有一个 <span class="inline_code">VoxelViewer</span> 节点，您应该看到以下内容：<p>
+<img src='https://voxel-tools.readthedocs.io/en/latest/images/custom-stream.jpg' alt="Custom stream" /><p>
+<p>
+虽然可能不是您想要使用的，但 <span class="inline_code">VoxelBuffer.fill()</span> 上面是一个快速示例。Generate\_block通常会为您提供一个由 16x16x16 个立方体组成的块，以便一次填充所有立方体，因此您也可以使用 <span class="inline_code">VoxelBuffer.set_voxel()</span> 单独指定每个立方体。您可以将通道更改为 ， <span class="inline_code">VoxelBuffer.CHANNEL_SDF</span> 以使用其他网格器（如 <span class="inline_code">VoxelMesherTransvoxel</span> ）获得平滑体素。<p>
+<h3> 线程安全</h3><p>
+<p>
+生成器是从多个线程调用的。确保代码是线程安全的。<p>
+
+如果生成器使用资源或导出要在运行时更改的参数，则应确保它们是只读的或按线程复制的，因此，如果从外部或其他线程修改资源，则不会中断生成器。<p>
+
+您可以使用 强制 <span class="inline_code">Mutex</span> 单线程访问变量，但要谨慎使用它，否则最终可能会将性能限制在一个线程上（而另一个线程等待锁被释放）。使用读写锁和线程局部是不错的选择，不幸的是，Godot脚本API不提供这一点。<p>
+
+小心延迟初始化，如果两个线程同时运行它，可能会导致崩溃。 <span class="inline_code">Curve</span> 是这样做的资源之一：如果你打电话 <span class="inline_code">interpolate_baked()</span> 并且它还没有烘烤，它将在最后一刻烘烤。下面是解决此问题的示例：<p>
+<div class="code_block"><pre><code>extends VoxelGeneratorScript
+
+const MountainsCurve : Curve = preload("moutains_curve.tres")
+
+# 这是在创建生成器时调用的
+func _init():
+    # 调用bake()以确保稍后不会在generate_block()中发生这种情况。
+    MountainsCurve.bake()
+
+# ...
+</code>
+</pre>
+</div><p>
+<p>
+类似的故事也发生在 <span class="inline_code">Image</span> 中。它需要先锁定，然后才能访问像素，但调用 <span class="inline_code">lock()</span> 和 <span class="inline_code">unlock()</span> 本身不是线程安全的。解决此问题的一种方法是将 <span class="inline_code">lock()</span> 图像放入 <span class="inline_code">_init()</span> 并在生成器的整个生命周期内将其锁定。当然，这假设图像永远不会从外部访问：<p>
+<div class="code_block"><pre><code>extends VoxelGeneratorScript
+
+var image : Image
+
+# 这是在创建生成器时调用的
+func _init():
+    image = Image.new()
+    image.load("some_heightmap.png")
+    image.lock()
+
+func generate_block(buffer : VoxelBuffer, origin : Vector3i, lod : int) -&gt; void:
+    # ... 自由使用image.get_pixel()... 
+    # ... 但不要用image.set_pixel() ...
+
+func _notification(what: int):
+    if what == NOTIFICATION_PREDELETE:
+        # 当脚本被销毁时调用。
+        # 我不知道它是否真的需要，但为了正确性而解锁。
+        image.unlock()
+
+# ...
+</code>
+</pre>
+</div><p>
+<p>
+在Godot 4中不再需要<span class="inline_code">Image.lock()</span>。<p>
+<h2> 自定义流</h2><p>
+<p>
+创建自定义流的工作方式与自定义生成器类似。<p>
+
+您必须扩展类 <span class="inline_code">VoxelStreamScript</span> 并覆盖方法 <span class="inline_code">_load_block</span> 和 <span class="inline_code">_save_block</span> .看<p>
+
+自定义流的待办事项脚本示例
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

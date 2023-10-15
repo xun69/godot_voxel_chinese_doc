@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>参与GoodotVoxel模块开发</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<h1>参与Goodot Voxel模块开发</h1><p>
+
+该模块的源代码可以在Github上找到。<p>
+<h2> 贡献</h2><p>
+<p>
+要为模块做出贡献，您需要使用 Git 克隆存储库，并在 Github 上创建分支，以便能够发出拉取请求。<p>
+<h3> C++代码</h3><p>
+<p>
+建议阅读官方 Godot 文档中的引擎开发部分。它解释了如何编译引擎、设置 IDE 以及如何创建自定义模块。<p>
+
+有关与体素工具相关的代码指南，请参阅代码指南<p>
+<h3> 主要文档</h3><p>
+<p>
+该文档是使用Markdown编写的，使用Mkdocs格式化，并作为ReadTheDocs上的网站提供。<p>
+
+要为主页做出贡献，请对 <span class="inline_code">doc/docs</span> 文件夹下的文件进行更改 <span class="inline_code">.md</span> ，并在 Github 上发布 PR。<p>
+<h3> API 文档</h3><p>
+<p>
+为了贡献类引用 （API），您可以改为在 下 <span class="inline_code">doc/classes</span> 编辑 XML 文件，类似于对常规 Godot 模块或核心类所做的那样。<p>
+
+更改 XML 文件后，可以使用以下命令使用 中的 <span class="inline_code">build.py</span> <span class="inline_code">doc/tools</span> 脚本将其转换为其 Markdown 对应项：<p>
+<div class="code_block"><pre><code>python build.py -a
+</code>
+</pre>
+</div><p>
+<p>
+<span class="inline_code">build.py</span> 有其他论据可以做其他事情。如果在没有参数的情况下运行它，将打印帮助。<p>
+<h3>  图形节点文档</h3><p>
+
+\[VoxelGeneratorGraph\] 的图形节点目前没有用 Godot 类表示。因此，他们在 XML 文件中使用自己的文档，使用类似于类的工作流。XML 文件是编辑器以及在线文档中显示的节点描述和类别的唯一事实来源。<p>
+
+XML文件可以通过使用以下参数运行Godot来从引擎中存在的节点生成或更新：<p>
+<span class="inline_code">--voxel_doc_tool src dst</span><p>
+
+其中 <span class="inline_code">src</span> 是原始 XML 的路径， <span class="inline_code">dst</span> 是写入更新的 XML 的路径。两条路径可以相同。此 XML 文件应已在 下 <span class="inline_code">doc/graph_nodes.xml</span> 进行版本控制。<p>
+
+然后，可以使用 XML 文件生成多个文档：<p>
+<li>    </li><p>
+    Markdown 文档，出现在网站上
+<li>    </li><p>
+    C++文档，显示在编辑器中<p>
+
+两者都是通过从内部 <span class="inline_code">doc/tools/</span> 运行脚本 <span class="inline_code">graph_nodes_doc.py</span> 生成的。<p>
+<h2> 图层</h2><p>
+
+<h3> 主要层</h3><p>
+<p>
+该模块有 3 个主要层：<p>
+<li>    </li><p>
+    体素：体素引擎。包装到命名空间中 <span class="inline_code">zylann::voxel::</span> 。
+<li>    </li><p>
+    Util：函数、助手和数据结构库，不依赖于体素。包装到命名空间中 <span class="inline_code">zylann::</span> 。
+<li>    </li><p>
+    第三方：第三方库。<p>
+<h3> 文件夹</h3><p>
+<p>
+该模块分为多个文件夹，每个文件夹都有不同的依赖项。因此，可以使用 ，或 <span class="inline_code">VoxelStream</span> 独立使用 <span class="inline_code">VoxelMesher</span> ， <span class="inline_code">VoxelGenerator</span> 而无需使用 <span class="inline_code">VoxelTerrain</span> 节点。<table><tr><td>  目录 <td>  描述 </tr>
+<tr><td> constants/ <td>整个引擎中使用的常量和查找表。 </tr>
+<tr><td> doc/ <td>  包含文档 </tr>
+<tr><td> edition/ <td>用于访问和修改体素的高级实用程序。可能取决于体素节点。 </tr>
+<tr><td> editor/ <td>特定于编辑器的代码。也可能取决于体素节点。 </tr>
+<tr><td> meshers/ <td>包含任务管理。依赖于网格器、流、存储，但不直接依赖于节点。 </tr>
+<tr><td> generators/ <td>程序生成器。它们仅依赖于体素存储和数学。 </tr>
+<tr><td> meshers/ <td>仅依赖于体素存储、数学和一些 Godot 图形 API。 </tr>
+<tr><td> misc/ <td>各种脚本和配置文件，存储在这里以避免主文件夹混乱。 </tr>
+<tr><td> modifiers/ <td>与修饰符功能相关的文件。 </tr>
+<tr><td> shaders/ <td>引擎内部使用的着色器，包括文本形式和格式化C++形式。 </tr>
+<tr><td> storage/ <td>存储和内存数据结构。 </tr>
+<tr><td> streams/ <td>文件处理代码。仅取决于文件系统和存储。 </tr>
+<tr><td> terrain/ <td>包含所有节点。取决于模块的其余部分，但仅编辑器部分除外。 </tr>
+<tr><td> tests/ <td>包含测试。如果在构建脚本中启用，则当 Godot 启动时，它们会运行。 </tr>
+<tr><td> thirdparty/ <td>第三方库，源代码形式。它们是静态编译的，因此Godot仍然是一个可执行文件。 </tr>
+<tr><td> util/ <td>通用实用程序函数和结构。他们不依赖于体素的东西。 </table><h3> 代码</h3><p>
+<p>
+除了文件夹结构所反映的层之外，Godot 和这个模块之间还有一个隐含的区别：如果一段代码不需要依赖 Godot，那么它往往不依赖于 Godot。<p>
+
+例如，Transvoxel的实现对Godot的依赖性很小。事实上，它不关心资源是什么，不需要变体，不需要绑定，不需要使用 OOP 等。这就是为什么网格资源不包含逻辑，而是充当算法与其在Godot中的使用之间的“桥梁”。<p>
+
+同样适用于 <span class="inline_code">VoxelBuffer</span> ：这个类实际上不是一个成熟的戈多对象。它比这轻得多，因为它可以有数千个实例，甚至支持在堆栈上分配和移动。在脚本编写者必须与之交互的少数情况下，它作为包装器对象公开。<p>
+<h2> 测试</h2><p>
+<p>
+测试不是强制性的，但如果有时间进行新的测试，那就太好了。<p>
+
+该模块最近包含一个 <span class="inline_code">tests/</span> 文件夹，其中包含单元测试。在撰写本文时，它们很少，我仍然不经常写新的。作为一名游戏开发人员，为所有内容编写单元测试并不是我习惯的一部分，但我认识到，对于像这样的模块，如果可以轻松测试功能，最好有一些。它甚至已经帮助修复了一些错误。<p>
+
+目前没有使用测试框架，相反，它们只是通过在失败或不失败时打印错误来运行。在Godot 4中使用了Doctest框架，因此我们可以看看以后是否可以迁移到该框架。<p>
+<h2> 线程</h2><p>
+<p>
+该模块使用多个后台线程来处理体素。线程数可以在项目设置中调整。<p>
+<img src='https://voxel-tools.readthedocs.io/en/latest/images/threads_schema.webp' alt="Schema of threads" /><p>
+<p>
+有一个线程池。可以给这个池分配许多任务，并将它们分发到它的所有线程。因此，可用的线程越多，大量任务的完成速度就越快。任务也按优先级排序，因此例如，在生成 300 米外的体素块之前，将运行更新玩家附近的网格。<p>
+
+某些任务计划在“串行”组中，这意味着一次只能运行其中一个任务（尽管任何线程都可以运行它们）。这是为了避免在等待任务都锁定共享资源时阻塞所有线程。这用于 I/O，例如加载和保存到磁盘。<p>
+
+线程在体素引擎中进行管理。<p>
+
+注意：此任务系统不考虑“框架”。任务可以随时运行少于或多个主线程的帧。<p>
+<h2> 代码规范</h2><p>
+
+<h3> 语法</h3><p>
+<p>
+在大多数情况下，使用 <span class="inline_code">clang-format</span> 并遵循戈多惯例。<p>
+<li>    </li><p>
+    类和结构名称 <span class="inline_code">PascalCase</span>
+<li>    </li><p>
+    常量、枚举和宏 <span class="inline_code">CAPSLOCK_CASE</span>
+<li>   其他名称 <span class="inline_code">snake_case</span></li><p>
+<li>    </li><p>
+    前缀为 <span class="inline_code">g_</span>
+<li>    </li><p>
+    前缀为 的 <span class="inline_code">s_</span> 静态
+<li>    </li><p>
+    以 <span class="inline_code">tls_</span>
+<li>    </li><p>
+    以 为 <span class="inline_code">p_</span> 前缀的参数，但到目前为止尚未真正强制执行。大功能很重要。
+<li>    </li><p>
+    前缀为 的 <span class="inline_code">_</span> 私有和受保护字段
+<li>    </li><p>
+    一些私有函数以 开头 <span class="inline_code">_</span> ，要么是为了模仿 Godot API，要么是不执行检查的重用函数
+<li>    </li><p>
+    信号处理程序函数以 为 <span class="inline_code">_on_</span> 前缀，绝不应手动调用
+<li>    </li><p>
+    以名称为前缀的枚举。例： <span class="inline_code">enum Type { TYPE_ONE, TYPE_TWO }</span>
+<li>    </li><p>
+    行尾左大括号，下行闭合
+<li>   从不省略大括号</li><p>
+<li>    </li><p>
+    二进制运算符和控制流之间的空间： <span class="inline_code">if (a + b == 42)</span>
+<li>   使用制表符缩进</li><p>
+<li>    </li><p>
+    私有包装器函数可用于适应脚本 API，并以 <span class="inline_code">_b_</span> .
+<li>    </li><p>
+    使用 Clang-format 来自动化大多数这些规则（C++项目的根目录应该包含一个文件）
+<li>    </li><p>
+    首选仅包含评论的评论 <span class="inline_code">//</span>
+<li>    </li><p>
+    包装类中的某些虚拟函数带有前缀 <span class="inline_code">_zn_</span> ，以便在编译为模块或 GDExtension时封装签名差异。<p>
+<h3> 文件结构</h3><p>
+
+<li>    </li><p>
+    用于 <span class="inline_code">.h</span> 标头和 <span class="inline_code">.cpp</span> 实现文件。
+<li>    </li><p>
+    文件名使用 <span class="inline_code">snake_case</span> .
+<li>    </li><p>
+    构造函数和析构函数位于顶部
+<li>    </li><p>
+    公共 API 在上面，私有的东西在下面
+<li>    </li><p>
+    绑定位于底部。
+<li>    </li><p>
+    避免排长队。首选的最大行长度为 120 个字符。不要在同一条线上安装太多操作，请使用局部变量。
+<li>    </li><p>
+    如果 <span class="inline_code">.cpp</span> 类型或函数是内部的，则在编译时间中定义类型或函数可能比在标头中定义类型或函数更好。<p>
+<h3> C++功能</h3><p>
+
+<li>    </li><p>
+    除非类型无法表达或模板较长（如 STL 模板），否则不要使用 <span class="inline_code">auto</span> 。未授予 IDE（Github 审查和差异）
+<li>    </li><p>
+    适度使用 lambda 和函子是可以的。不是 <span class="inline_code">std::function</span> .
+<li>    </li><p>
+    应明确定义 Lambda 捕获（尝试减少 或 <span class="inline_code">[&]</span> 的使用 <span class="inline_code">[=]</span> ）
+<li>    </li><p>
+    如果STL的表现明显优于Godot替代品，那么它就可以了。
+<li>    </li><p>
+    初始化声明旁边的变量
+<li>    </li><p>
+    避免使用宏来定义逻辑或常量。首选 <span class="inline_code">static const</span> 和 <span class="inline_code">constexpr</span> <span class="inline_code">inline</span> 函数。
+<li>    </li><p>
+    更喜欢添加到 <span class="inline_code">const</span> 初始化后不会更改的变量（暂时保留函数参数，因为它会使签名很长）
+<li>    </li><p>
+    当存在显式替代项时，不要利用布尔化。示例：使用 <span class="inline_code">if (a == nullptr)</span> 代替 <span class="inline_code">if (!a)</span>
+<li>    </li><p>
+    如果可能，请避免使用纯数组，例如 <span class="inline_code">int a[42]</span> 。调试器不会捕获它们的溢出。更喜欢使用包装器，例如 <span class="inline_code">FixedArray</span> 和 <span class="inline_code">Span</span> （或 <span class="inline_code">std::array</span> 一旦 <span class="inline_code">std::span</span> 修复）
+<li>    </li><p>
+    使用 <span class="inline_code">uint32_t</span> ， ， <span class="inline_code">uint16_t</span> <span class="inline_code">uint8_t</span> 以防整数大小很重要。
+<li>    </li><p>
+    如果可能，请在标头中使用前向声明，而不是包含文件
+<li>    </li><p>
+    不要在标头中做 <span class="inline_code">using namespace</span> （除了 ，但这只是为了帮助支持使用相同的代码库的 GDExtension <span class="inline_code">godot::</span> ，因为 Godot 核心没有这个命名空间）。
+<li>    </li><p>
+    <span class="inline_code">mutable</span> 只能用于线程同步原语。不要将它与“缓存数据”一起使用来制作getter <span class="inline_code">const</span> ，因为它在多线程上下文中可能会产生误导。
+<li>    </li><p>
+    不使用例外<p>
+<h3> 错误处理</h3><p>
+
+<li>    </li><p>
+    不使用例外。
+<li>    </li><p>
+    检查不变量，尽早失败。使用 <span class="inline_code">CRASH_COND</span> 或 <span class="inline_code">ZN_ASSERT</span> 在调试模式下确保状态符合预期，即使它们不会立即造成伤害。
+<li>    </li><p>
+    崩溃对用户来说并不好，因此在面向用户的代码（脚本）中使用宏 <span class="inline_code">ZN_ASSERT_RETURN</span> 来获取 <span class="inline_code">ERR_FAIL_COND</span> 可以从错误中恢复的代码，或防止命中内部断言
+<li>    </li><p>
+    前缀为 Godot 的宏与 Godot 无关，可用于不太依赖 Godot <span class="inline_code">ZN_</span> 的区域的可移植性。<p>
+<h3> 性能</h3><p>
+<p>
+在运行频繁的性能关键领域：<p>
+<li>    </li><p>
+    避免分配。通过内存池、 <span class="inline_code">ObjectPool</span> 固定大小的阵列或使用 <span class="inline_code">std::vector</span> 容量重复使用内存。
+<li>    </li><p>
+    避免 <span class="inline_code">virtual</span> 、 <span class="inline_code">Ref<T></span>  、<span class="inline_code">String</span>
+<li>    </li><p>
+    不要调整大小 <span class="inline_code">PoolVectors</span> 或 <span class="inline_code">Vector<T></span> ，或者如果需要，一次性完成
+<li>    </li><p>
+    注意什么是线程安全的，什么是不是。此模块的一些主要区域在线程中工作。
+<li>    </li><p>
+    将互斥锁减少到最低限度，避免长时间锁定。
+<li>    </li><p>
+    使用适合随时间推移最频繁使用的数据结构（通常是数组、向量或哈希映射）。
+<li>    </li><p>
+    如果统计数据的影响可以忽略不计，请考虑统计数据。它可以帮助用户监控模块的性能，即使在发布版本中也是如此。
+<li>    </li><p>
+    在发布模式下分析代码。此模块对 Tracy 友好，请参阅 <span class="inline_code">util/profiling.hpp</span> 。
+<li>    </li><p>
+    在制作数据结构时要注意对齐。例如，打包小于 4 个字节的字段，以便更好地利用空间<p>
+<h3> Godot API</h3><p>
+
+<li>    </li><p>
+    在性能很重要的领域，使用最直接的 API 来完成作业。特别是，不要使用节点。请参阅 <span class="inline_code">RenderingServer</span> 和 <span class="inline_code">PhysicsServer</span> 。
+<li>    </li><p>
+    仅当函数可以安全使用并保证存在一段时间时，才向脚本 API 公开函数
+<li>    </li><p>
+    如果可能，请使用 <span class="inline_code">memnew</span> 、 <span class="inline_code">memdelete</span> 等 <span class="inline_code">memalloc</span> <span class="inline_code">memfree</span> ，以便在 Godot 监视器中计算内存使用量
+<li>    </li><p>
+    不要留下随机打印。对于详细模式，您也可以使用 <span class="inline_code">ZN_PRINT_VERBOSE()</span> <span class="inline_code">print_verbose()</span> 代替 。
+<li>    </li><p>
+    如果脚本不需要超过 2^31，则用作 <span class="inline_code">int</span> 脚本公开的函数的参数，即使它们从不为负数，因此如果用户犯了错误，错误会更清晰
+<li>    </li><p>
+    如果可能的话，将Godot的使用保持在最低限度，以使代码更具可移植性，有时在将来的GDExtension中更快。某些区域使用 中 <span class="inline_code">util/</span> 定义的自定义等效项。<p>
+
+编译为模块或扩展都受支持，因此涉及一些限制：<p>
+<li>    </li><p>
+    不要直接包含戈多标头。使用来自 的 <span class="inline_code">util/godot</span> 标头。
+<li>    </li><p>
+    仅使用可用于 GDExtension（或脚本 API）的 API。如果它们存在于两者中但不同，请使用 中 <span class="inline_code">util/godot</span> 定义的包装器。<p>
+<h3> 命名空间</h3><p>
+<p>
+有意的命名空间是 <span class="inline_code">zylann::</span> 主要的，并且 <span class="inline_code">zylann::voxel::</span> 用于与体素相关的东西。模块的不同部分可能还有其他部分。<p>
+
+注册的类也具有命名空间以防止冲突。这些没有出现在Godot的ClassDB中，因此与体素相关的类也带有前缀 <span class="inline_code">Voxel</span> 。其他更泛型的类带有前缀 <span class="inline_code">ZN_</span> 。<p>
+
+如果已注册的类需要与内部类相同的名称，则可以将其放入 <span class="inline_code">::gd</span> 子命名空间中。另一方面，内部类也可以加后缀 <span class="inline_code">Internal</span> 。<p>
+<h3> 版本控制</h3><p>
+
+<li>    </li><p>
+    首选使用逻辑更改分隔提交，并使用代码格式分隔提交
+<li>    </li><p>
+    执行 PR 时，更喜欢压缩 WIP 提交<p>
+<h2> 调试</h2><p>
+
+<h3> 命令行参数</h3><p>
+<p>
+当你启动Godot时，默认情况下它会启动项目经理。当您从那里选择一个项目时，它将重新启动自身，但这会断开调试器的连接。所以建议使用命令行参数，在你想要的项目和模式下直接启动Godot。<p>
+
+首先，确保Godot在项目的工作目录中启动。<p>
+<li>    </li><p>
+    要调试游戏，请毫无争议地启动Godot，它将从主场景开始。
+<li>    </li><p>
+    要调试项目的特定场景，请使用场景的相对路径作为命令行参数启动 Godot
+<li>    </li><p>
+    若要调试编辑器，请添加 <span class="inline_code">-e</span> 参数。<p>
+
+在 Windows 上的 VSCode <span class="inline_code">launch.json</span> 中设置的选项示例：<p>
+<div class="code_block"><pre><code>{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg", // For MSVC
+            //"type": "cppdbg", // For GDB
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/godot.windows.editor.dev.x86_64.exe", // Dev build (old target=debug)
+            //"program": "${workspaceFolder}/bin/godot.windows.editor.x86_64.exe", // Non-dev build (old target=release_debug)
+            "args": [
+                "-v", // Verbose output
+
+                //"-e", // Editor mode
+
+                //"--debug-collisions",
+
+                // Run a specific scene
+                //"local_tests/sqlite/test_sqlite.tscn",
+                //"local_tests/texturing/test_textured_terrain.tscn"
+                //"local_tests/texturing/test_texturing.tscn"
+            ],
+            "stopAtEntry": false,
+            "cwd": "D:/PROJETS/INFO/GODOT/Games/SolarSystem/Project",
+            "environment": [],
+            "visualizerFile": "${workspaceFolder}/modules/voxel/misc/voxel.natvis"
+        }
+    ]
+}
+</code>
+</pre>
+</div><p>
+
+<h3> 出错时的断点</h3><p>
+<p>
+建议使用调试器在发生错误或崩溃时获得更好的信息。打开 <span class="inline_code">core/error/error_macros.cpp</span> （在Godot 4.x中）并在 中 <span class="inline_code">_err_print_error</span> 保留一个断点可能很有用，这样每次发生错误时，调试器都会中断其中，为您提供实时调用堆栈和要检查的变量状态。<p>
+
+如果您调试编辑器，Godot 往往会为不重要的事情打印更多错误，例如在脚本编辑器中犯临时错误，或者尝试在资源管理器停靠中索引资源文件并因任何原因失败。在这种情况下，您可能需要干净的专用测试项目，或者在启动后放置断点。<p>
+<h3> 调试打印</h3><p>
+
+ Godot：<p>
+<div class="code_block"><pre><code>#include &lt;core/string/print_string.h&gt;
+
+print_line(String("Hello {0}, my age is {1}").format(varray(name, age)));
+</code>
+</pre>
+</div><p>
+
+ 非 Godot：<p>
+<div class="code_block"><pre><code>#include "util/log.h"
+#include "util/string_funcs.h"
+
+println(format("Hello {}, my age is {}", name, age));
+</code>
+</pre>
+</div><p>
+
+<h3> 漂亮的打印</h3><p>
+<p>
+除了STL的容器类型之外，Godot和体素模块都使用自己的容器类型。调试器通常无法检查它们。例如，Godot 的 <span class="inline_code">Vector<T></span> 类类似于 但 <span class="inline_code">std::vector<T></span> 调试器无法让你检查其中的内容。<p>
+
+若要解决此问题，通常可以向调试器提供一个文件，其中列出了特殊模式，以更用户友好的方式检查这些类型。<p>
+
+在VSCode中，cpp-tools扩展支持natvis文件。戈多在. <span class="inline_code">platform/windows/godot.natvis</span> 要获得 Godot 类型的漂亮打印，请在您的 <span class="inline_code">launch.json</span> 文件中添加以下行：<p>
+<div class="code_block"><pre><code>"visualizerFile": "${workspaceFolder}/platform/windows/godot.natvis"
+</code>
+</pre>
+</div><p>
+<p>
+不幸的是，目前只能提供一个文件。一个问题开放，请求支持多个文件。这意味着，如果您还想对体素模块的结构进行漂亮的打印，则必须将natvis路径替换为以下内容：<p>
+<div class="code_block"><pre><code>"visualizerFile": "${workspaceFolder}/modules/voxel/misc/voxel.natvis"
+</code>
+</pre>
+</div><p>
+
+<h2> Tracy简介</h2><p>
+<p>
+此模块包含用于分析特定代码段的宏。默认情况下，这些宏将扩展到 Tracy 探查器区域。它允许检查代码运行需要多长时间，并将其显示在时间线中。<p>
+
+它用Tracy 0.7.8进行了测试。<p>
+<img src='https://voxel-tools.readthedocs.io/en/latest/images/tracy.webp' alt="Tracy screenshot" /><p>
+<p>
+Godot 文档中也提到了替代分析器。它们分析所有内容，似乎基于 CPU 采样，而 Tracy 是一个检测分析器，在时间轴上提供特定的实时结果。<p>
+<h3>  如何使用探查器作用域</h3><p>
+
+分析范围限定一段代码。它获取之前、之后的时间，并将其记录到时间轴中。C++我们可以使用 RAII 在退出函数或块时自动关闭一个部分，因此通常在分析区域的开头需要一个宏。<p>
+
+宏与探查器无关，因此如果要使用其他探查器，可以更改它们。<p>
+
+您需要包含 <span class="inline_code">util/profiling.h</span> 才能访问宏。<p>
+
+要分析整个函数，请执行以下操作：<p>
+<div class="code_block"><pre><code>void some_function() {
+    ZN_PROFILE_SCOPE();
+    //...
+}
+</code>
+</pre>
+</div><p>
+<p>
+要分析函数的一部分：<p>
+<div class="code_block"><pre><code>void some_function() {
+    // 一些代码...
+
+    // 可以是“if”、“for”、“while”，也可以是这里的简单块
+    {
+        ZN_PROFILE_SCOPE();
+        // 分析的代码...
+    }
+
+    //...
+}
+</code>
+</pre>
+</div><p>
+<p>
+默认情况下，作用域采用函数的名称或文件和行号，但您可以使用 显式 <span class="inline_code">ZN_PROFILE_SCOPE_NAMED("Hello")</span> 指定名称。仅支持编译时字符串，请勿使用 <span class="inline_code">String</span> 或 <span class="inline_code">std::string</span> .<p>
+
+也可以绘制数值，以便它们也显示在时间轴中：<p>
+<div class="code_block"><pre><code>void process_every_frame() {
+    // Some code...
+
+    ZN_PROFILE_PLOT("Bunnies", bunnies.size());
+}
+</code>
+</pre>
+</div><p>
+
+<h3>  将Tracy添加到Godot</h3><p>
+
+要添加 Tracy 支持，请将其克隆到（Godot 的 <span class="inline_code">thirdparty</span> 文件夹，而不是体素模块）下 <span class="inline_code">thirdparty/tracy</span> 。然后在 中添加 <span class="inline_code">modules/voxel/SCsub</span> 以下行：<p>
+<div class="code_block"><pre><code># tracy library
+env.Append(CPPDEFINES="TRACY_ENABLE")
+env_voxel.Append(CPPDEFINES="TRACY_ENABLE")
+voxel_files += ["#thirdparty/tracy/TracyClient.cpp"]
+</code>
+</pre>
+</div><p>
+<p>
+这些行可能已经存在，如果是这样，只需取消注释它们。<p>
+完成分析后，不要忘记删除这些行，否则分析数据将累积在内存中而不被检索。<p>
+<hr><p>
+<b>注意</b><p>
+
+Tracy 有一个帧标记的概念，通常由应用程序提供，用于告诉探查器每个帧何时开始。Godot 本身不提供性能分析宏，因此帧标记被黑客入侵到进程函数中 <span class="inline_code">VoxelEngine</span> 。这允许在时间轴中看到主线程的帧，但它们将从其实际开始偏移。<p>
+<hr><p>
+
+这种整合Tracy的方式是基于vblanco的这个提交<p>
+<h2> 预处理器宏</h2><p>
+<p>
+该模块具有一些预处理器宏，可以定义这些宏以关闭正在编译的部分代码。有些可以通过 SCons 命令行参数指定。<p>
+<li>    </li><p>
+    <span class="inline_code">MESHOPTIMIZER_ZYLANN_NEVER_COLLAPSE_BORDERS</span> ：必须定义此值才能解决 的问题 <span class="inline_code">MeshOptimizer</span> 。见 https://github.com/zeux/meshoptimizer/issues/311
+<li>    </li><p>
+    <span class="inline_code">MESHOPTIMIZER_ZYLANN_WRAP_LIBRARY_IN_NAMESPACE</span> ：必须定义这个以防止与Godot自己的MeshOptimizer版本发生冲突。见 https://github.com/zeux/meshoptimizer/issues/311#issuecomment-955750624
+<li>    </li><p>
+    <span class="inline_code">VOXEL_ENABLE_FAST_NOISE_2</span> ：如果已定义，该模块将使用 FastNoise2 进行编译，并集成了对 SIMD 噪声的支持。它是可选的，以防它在某些编译器或平台上引起问题。SCons 参数： <span class="inline_code">voxel_fast_noise_2=yes</span>
+<li>    </li><p>
+    <span class="inline_code">VOXEL_RUN_TESTS</span> ：如果 ，则将 <span class="inline_code">True</span> 编译测试并在启动时运行，以验证引擎的某些功能是否仍然正常工作。默认情况下，它在生产版本中处于关闭状态。这主要用于在模块上进行C++开发时的调试版本。SCons 参数： <span class="inline_code">voxel_tests=yes</span>
+<li>    </li><p>
+    <span class="inline_code">ZN_GODOT</span> ：在将此项目编译为模块时必须定义。
+<li>    </li><p>
+    <span class="inline_code">ZN_GODOT_EXTENSION</span> ：在将此项目编译为 GDExtension时必须定义。<p>
+<h2> 着色器</h2><p>
+<p>
+该模块包含其某些功能的着色器，主要是计算着色器。它们位于 <span class="inline_code">shaders/dev/</span> 文件夹下。<p>
+
+<span class="inline_code">shaders/dev</span> 包含一个戈多项目。这个项目的目的主要是快速测试着色器是否编译正确，并最终使用简单的场景和GDScript代码对其进行测试。<p>
+
+有几种编写着色器的方法：<p>
+<li>    </li><p>
+    普通：常规着色器，将按原样使用。
+<li>    </li><p>
+    模板：这些包含 <span class="inline_code"><PLACEHOLDER></span> 部分，引擎将用生成的代码替换这些部分。这些部分中的代码将被替换，并且仅用于使着色器在测试项目中编译。
+<li>    </li><p>
+    代码段：这些 <span class="inline_code"><SNIPPET></span> 包含部分，这些部分将插入到模板或其他生成的代码中。这些部分之外的代码将不会使用，并且仅用于使着色器在测试项目中编译。<p>
+
+在编译为模块时传送外部文件很不方便，因此它们直接嵌入C++中，类似于Godot的做法。可以执行脚本来更新这些生成的文件。您必须在 <span class="inline_code">shaders/</span> 文件夹中打开命令行并运行 <span class="inline_code">python text2cpp.py</span> 。<p>
+
+目前，生成着色器的C++代码与这些着色器的内容交织在一起。例如，代码生成中的C++字符串可以包含在 GLSL 文件中找到的变量名称，因此您应该打开两者以了解上下文。<p>
+<h2> 使用另一个模块中的模块</h2><p>
+
+直接在 Godot 中编写自定义C++模块是更直接地访问 Godot 和体素引擎功能的一种方法，这比 GDExtension的性能更好且更稳定。如果要创建自定义生成器、网格器、流或仅使用模块的组件，而无需直接修改模块，也可以执行此操作。<p>
+
+您可以通过在包含 <span class="inline_code">modules/voxel/</span> 中使用以下内容来包含体素模块中的文件：<p>
+<div class="code_block"><pre><code>#include &lt;modules/voxel/storage/voxel_buffer_internal.h&gt;
+</code>
+</pre>
+</div><p>
+<p>
+您还需要在 <span class="inline_code">SCsub</span> 文件中定义预处理器宏：<p>
+<div class="code_block"><pre><code>env_yourmodule.Append(CPPDEFINES = [
+    'ZN_GODOT'
+])
+</code>
+</pre>
+</div><p>
+
+<h2> GDExtension</h2><p>
+
+<hr><p>
+<b>警告</b><p>
+
+此功能正在开发中，尚未准备好投入生产。它有错误，可能会使引擎崩溃。检查问题跟踪器以了解正在进行的工作。<p>
+<hr><p>
+
+此模块可以编译为 GDExtension库。这允许将其作为库文件（ <span class="inline_code">.dll</span> ， <span class="inline_code">.so</span> ...）分发，而无需重新编译Godot引擎。TODO：Godot的文档似乎还没有包含有关GDExtension的信息。现在，您可以查看此旧新闻和GodotCpp存储库。<p>
+
+要编译库： <li>下载 GodotCpp 的副本 - 在体素模块的根目录中，在 <span class="inline_code">SConstruct</span> 脚本开头写入 GodotCpp 的路径，或从命令行设置环境变量。- 打开与编译Godot相同的控制台，将目录更改为体素模块的根文件夹，并在那里运行SCons。它将使用 <span class="inline_code">SConstruct</span> 该文件而不是 <span class="inline_code">SCsub</span> .库将保存在一个 <span class="inline_code">bin/</span> 文件夹下。</li><p>
+<p>
+Windows上的构建命令示例（用于编辑器的未优化调试版本）：<p>
+<div class="code_block"><pre><code>scons platform=windows target=debug -j4
+</code>
+</pre>
+</div><p>
+<p>
+构建的库将放置在 <span class="inline_code">project/</span> 包含 Godot 4 项目的文件夹中。然后可以打开它来测试扩展。请注意，它可能尚未针对所有平台进行设置（到目前为止，Windows 64 位已设置）。<p>
+
+在实现此目标之前，有许多问题需要解决。扩展能够运行，但存在已知问题。检查问题跟踪器以了解正在进行的工作。
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>

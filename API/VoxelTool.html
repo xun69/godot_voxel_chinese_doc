@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VoxelTool</title>
+	<link rel="stylesheet" href="../index.css">
+	<!-- 引入语法高亮 -->
+	<link href="../highlight/dark.min.css" rel="stylesheet">
+	<script src="../highlight/highlight.min.js"></script>
+	<!-- 引入JQuery -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// 根据正文内容创建目录
+			let content = "";
+			$(".main h1,.main h2,.main h3").each(function(index,ele){
+				$(this).before(`<a name ="ctn_${index}"></li>`)
+				switch(ele.tagName){
+					case "H1":
+						content += `<li class="h1"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H2":
+						content += `<li class="h2"><a href="#ctn_${index}">${ele.textContent}</a></li>`;
+						break;
+					case "H3":
+						content += `<li class="h3"><a href="#ctn_${index}">${ele.textContent.split("(")[0]}</a></li>`;
+						break;
+				}
+			})
+			$(".right ul").append(content);
+			// 侧边栏子文件夹点击事件
+			$(".doc_tree li>span").on("click",function(){
+				$(this).next("ul").toggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<!-- 左侧 -->
+	<aside class="left">
+		<div class="logo_box">
+			<a href="#" class="logo_text">Godot Voxel</a>
+			<span>中文文档</span>
+		</div>
+		<!-- 文档列表 -->
+		<div class="doc_tree">
+<ul>
+	<li><a href="../README.html">README</a></li>
+<li><span>API</span>
+	<ul>
+		<li><a href="../API/API文档.html">API文档</a></li>
+		<li><a href="../API/FastNoise2.html">FastNoise2</a></li>
+		<li><a href="../API/VoxelBlockSerializer.html">VoxelBlockSerializer</a></li>
+		<li><a href="../API/VoxelBlockyAttribute.html">VoxelBlockyAttribute</a></li>
+		<li><a href="../API/VoxelBlockyAttributeAxis.html">VoxelBlockyAttributeAxis</a></li>
+		<li><a href="../API/VoxelBlockyAttributeCustom.html">VoxelBlockyAttributeCustom</a></li>
+		<li><a href="../API/VoxelBlockyAttributeDirection.html">VoxelBlockyAttributeDirection</a></li>
+		<li><a href="../API/VoxelBlockyAttributeRotation.html">VoxelBlockyAttributeRotation</a></li>
+		<li><a href="../API/VoxelBlockyLibrary.html">VoxelBlockyLibrary</a></li>
+		<li><a href="../API/VoxelBlockyLibraryBase.html">VoxelBlockyLibraryBase</a></li>
+		<li><a href="../API/VoxelBlockyModel.html">VoxelBlockyModel</a></li>
+		<li><a href="../API/VoxelBlockyModelCube.html">VoxelBlockyModelCube</a></li>
+		<li><a href="../API/VoxelBlockyModelEmpty.html">VoxelBlockyModelEmpty</a></li>
+		<li><a href="../API/VoxelBlockyModelMesh.html">VoxelBlockyModelMesh</a></li>
+		<li><a href="../API/VoxelBlockyType.html">VoxelBlockyType</a></li>
+		<li><a href="../API/VoxelBlockyTypeLibrary.html">VoxelBlockyTypeLibrary</a></li>
+		<li><a href="../API/VoxelBoxMover.html">VoxelBoxMover</a></li>
+		<li><a href="../API/VoxelBuffer.html">VoxelBuffer</a></li>
+		<li><a href="../API/VoxelColorPalette.html">VoxelColorPalette</a></li>
+		<li><a href="../API/VoxelDataBlockEnterInfo.html">VoxelDataBlockEnterInfo</a></li>
+		<li><a href="../API/VoxelEngine.html">VoxelEngine</a></li>
+		<li><a href="../API/VoxelGenerator.html">VoxelGenerator</a></li>
+		<li><a href="../API/VoxelGeneratorFlat.html">VoxelGeneratorFlat</a></li>
+		<li><a href="../API/VoxelGeneratorGraph.html">VoxelGeneratorGraph</a></li>
+		<li><a href="../API/VoxelGeneratorHeightmap.html">VoxelGeneratorHeightmap</a></li>
+		<li><a href="../API/VoxelGeneratorImage.html">VoxelGeneratorImage</a></li>
+		<li><a href="../API/VoxelGeneratorNoise.html">VoxelGeneratorNoise</a></li>
+		<li><a href="../API/VoxelGeneratorNoise2D.html">VoxelGeneratorNoise2D</a></li>
+		<li><a href="../API/VoxelGeneratorScript.html">VoxelGeneratorScript</a></li>
+		<li><a href="../API/VoxelGeneratorWaves.html">VoxelGeneratorWaves</a></li>
+		<li><a href="../API/VoxelGraphFunction.html">VoxelGraphFunction</a></li>
+		<li><a href="../API/VoxelInstanceComponent.html">VoxelInstanceComponent</a></li>
+		<li><a href="../API/VoxelInstanceGenerator.html">VoxelInstanceGenerator</a></li>
+		<li><a href="../API/VoxelInstanceLibrary.html">VoxelInstanceLibrary</a></li>
+		<li><a href="../API/VoxelInstanceLibraryItem.html">VoxelInstanceLibraryItem</a></li>
+		<li><a href="../API/VoxelInstanceLibraryMultiMeshItem.html">VoxelInstanceLibraryMultiMeshItem</a></li>
+		<li><a href="../API/VoxelInstanceLibrarySceneItem.html">VoxelInstanceLibrarySceneItem</a></li>
+		<li><a href="../API/VoxelInstancer.html">VoxelInstancer</a></li>
+		<li><a href="../API/VoxelLodTerrain.html">VoxelLodTerrain</a></li>
+		<li><a href="../API/VoxelMeshSDF.html">VoxelMeshSDF</a></li>
+		<li><a href="../API/VoxelMesher.html">VoxelMesher</a></li>
+		<li><a href="../API/VoxelMesherBlocky.html">VoxelMesherBlocky</a></li>
+		<li><a href="../API/VoxelMesherCubes.html">VoxelMesherCubes</a></li>
+		<li><a href="../API/VoxelMesherDMC.html">VoxelMesherDMC</a></li>
+		<li><a href="../API/VoxelMesherTransvoxel.html">VoxelMesherTransvoxel</a></li>
+		<li><a href="../API/VoxelModifier.html">VoxelModifier</a></li>
+		<li><a href="../API/VoxelModifierMesh.html">VoxelModifierMesh</a></li>
+		<li><a href="../API/VoxelModifierSphere.html">VoxelModifierSphere</a></li>
+		<li><a href="../API/VoxelNode.html">VoxelNode</a></li>
+		<li><a href="../API/VoxelRaycastResult.html">VoxelRaycastResult</a></li>
+		<li><a href="../API/VoxelStream.html">VoxelStream</a></li>
+		<li><a href="../API/VoxelStreamRegionFiles.html">VoxelStreamRegionFiles</a></li>
+		<li><a href="../API/VoxelStreamSQLite.html">VoxelStreamSQLite</a></li>
+		<li><a href="../API/VoxelStreamScript.html">VoxelStreamScript</a></li>
+		<li><a href="../API/VoxelTerrain.html">VoxelTerrain</a></li>
+		<li><a href="../API/VoxelTool.html">VoxelTool</a></li>
+		<li><a href="../API/VoxelToolBuffer.html">VoxelToolBuffer</a></li>
+		<li><a href="../API/VoxelToolLodTerrain.html">VoxelToolLodTerrain</a></li>
+		<li><a href="../API/VoxelToolTerrain.html">VoxelToolTerrain</a></li>
+		<li><a href="../API/VoxelViewer.html">VoxelViewer</a></li>
+		<li><a href="../API/VoxelVoxLoader.html">VoxelVoxLoader</a></li>
+		<li><a href="../API/ZN_FastNoiseLite.html">ZN_FastNoiseLite</a></li>
+		<li><a href="../API/ZN_FastNoiseLiteGradient.html">ZN_FastNoiseLiteGradient</a></li>
+		<li><a href="../API/ZN_ThreadedTask.html">ZN_ThreadedTask</a></li>
+	</ul>
+
+</li>
+<li><span>主文档</span>
+	<ul>
+		<li><a href="../主文档/VoxelGeneratorGraph节点.html">VoxelGeneratorGraph节点</a></li>
+		<li><a href="../主文档/VoxelGeneratorGraph详细使用.html">VoxelGeneratorGraph详细使用</a></li>
+		<li><a href="../主文档/下载安装.html">下载安装</a></li>
+		<li><a href="../主文档/优化性能.html">优化性能</a></li>
+		<li><a href="../主文档/体素相关概念.html">体素相关概念</a></li>
+		<li><a href="../主文档/使用脚本创建和修改体素数据.html">使用脚本创建和修改体素数据</a></li>
+		<li><a href="../主文档/创建多人游戏.html">创建多人游戏</a></li>
+		<li><a href="../主文档/参与GoodotVoxel模块开发.html">参与GoodotVoxel模块开发</a></li>
+		<li><a href="../主文档/在编辑器中的使用.html">在编辑器中的使用</a></li>
+		<li><a href="../主文档/地形类型.html">地形类型</a></li>
+		<li><a href="../主文档/块状地形.html">块状地形</a></li>
+		<li><a href="../主文档/基于VoxelInstancer的实例化.html">基于VoxelInstancer的实例化</a></li>
+		<li><a href="../主文档/学习资源.html">学习资源</a></li>
+		<li><a href="../主文档/平滑地形.html">平滑地形</a></li>
+		<li><a href="../主文档/快速上手.html">快速上手</a></li>
+		<li><a href="../主文档/流.html">流</a></li>
+		<li><a href="../主文档/生成器.html">生成器</a></li>
+		<li><a href="../主文档/程序化生成.html">程序化生成</a></li>
+	</ul>
+
+</li>
+<li><span>序列化格式</span>
+	<ul>
+		<li><a href="../序列化格式/SQLite格式.html">SQLite格式</a></li>
+		<li><a href="../序列化格式/体素块格式v1.html">体素块格式v1</a></li>
+		<li><a href="../序列化格式/体素块格式v2.html">体素块格式v2</a></li>
+		<li><a href="../序列化格式/体素块格式v3.html">体素块格式v3</a></li>
+		<li><a href="../序列化格式/体素块格式v4.html">体素块格式v4</a></li>
+		<li><a href="../序列化格式/区域格式v2.html">区域格式v2</a></li>
+		<li><a href="../序列化格式/区域格式v3.html">区域格式v3</a></li>
+		<li><a href="../序列化格式/压缩数据格式.html">压缩数据格式</a></li>
+		<li><a href="../序列化格式/实例块格式v0.html">实例块格式v0</a></li>
+		<li><a href="../序列化格式/实例块格式v1.html">实例块格式v1</a></li>
+		<li><a href="../序列化格式/序列化格式.html">序列化格式</a></li>
+	</ul>
+
+</li>
+</ul>
+
+		</div>
+
+	</aside>
+	<!-- 整体布局 -->
+	<div class="layout center">
+		<!-- 正文区 -->
+		<div class="main">
+<hr>
+created: 2023-10-09T22:38:26 (UTC +08:00)
+tags: []
+source: https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/
+author: 
+<hr><p>
+<h1>VoxelTool体素工具</h1><p>
+
+> <h2>Excerpt</h2><p>
+> 继承：引用计数<p>
+<hr>
+ 继承：引用计数<p>
+  
+继承者：VoxelToolBuffer， VoxelToolLodTerrain， VoxelToolTerrain<p>
+  
+帮助程序类，可轻松访问和修改体素<p>
+<h2> 说明：</h2><p>
+
+  
+用于访问和编辑体素的抽象界面。它允许访问单个体素，或执行批量操作，例如雕刻大块或复制/粘贴框。<p>
+  
+它不是一个单独实例化的类，您可以从要使用的体素对象中获取它。<p>
+<h2> 属性：</h2>
+<table><tr><td>  类型 <td>  名字 <td>  违约 </tr>
+<tr><td> <span class="inline_code">int</span> </tr>  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_channel' target="_blank">渠道</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_eraser_value' target="_blank">eraser\_value</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">int</span> </tr>  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_mode' target="_blank">模式</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">float</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_sdf_scale' target="_blank">sdf\_scale</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">float</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_sdf_strength' target="_blank">sdf\_strength</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">float</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_texture_falloff' target="_blank">texture\_falloff</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">int</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_texture_index' target="_blank">texture\_index</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">float</span> </tr> <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_texture_opacity' target="_blank">texture\_opacity</a>
+ <tr><td>  </tr>
+<tr><td> <span class="inline_code">int</span> </tr>  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#i_value' target="_blank">价值</a>
+ <tr><td>  </table><h2> 方法：</h2>
+<table><tr><td>  返回 <td>  签名 </tr>
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+color\_to\_u16 （ 颜色 ） 静态 |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+color\_to\_u16\_weights （ 颜色 \_unnamed\_arg0 ） 静态 |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+copy （ Vector3i src\_pos， VoxelBuffer dst\_buffer， int channels\_mask ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+do\_box （ Vector3i 开始， Vector3i 结束 ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+do\_point （ Vector3i pos ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+do\_sphere（矢量3中心，浮点半径） |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+get\_voxel （ Vector3i pos ） |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">浮</a>
+ |   
+get\_voxel\_f （ Vector3i pos ） |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_variant.html' target="_blank">变体</a>
+ |   
+get\_voxel\_metadata （ Vector3i pos ） const |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_bool.html' target="_blank">布尔</a>
+ |   
+is\_area\_editable （ AABB 框 ） 常量 |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_color.html' target="_blank">颜色</a>
+ |   
+normalize\_color （ 颜色 \_unnamed\_arg0 ） 静态 |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+paste （ Vector3i dst\_pos， VoxelBuffer src\_buffer， int channels\_mask ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+paste\_masked （ Vector3i dst\_pos， VoxelBuffer src\_buffer， int channels\_mask， int mask\_channel， int mask\_value ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelRaycastResult/' target="_blank">体素光线投射结果</a>
+ |   
+光线投射（矢量 3 原点、矢量 3 方向、浮点max\_distance=10.0、int collision\_mask=4294967295 ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+set\_voxel （ Vector3i pos， int v ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+set\_voxel\_f （ Vector3i pos， float v ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+set\_voxel\_metadata （ Vector3i pos， Variant meta ） |
+|  <a href='https://voxel-tools.readthedocs.io/en/latest/api/VoxelTool/#' target="_blank">无效</a>
+ |   
+smooth\_sphere （ 矢量3 sphere\_center， 浮点sphere\_radius， 整数 blur\_radius ） |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_vector4i.html' target="_blank">矢量4i</a>
+ |   
+u16\_indices\_to\_vec4i （ int \_unnamed\_arg0 ） 静态 |
+|  <a href='https://docs.godotengine.org/en/stable/classes/class_color.html' target="_blank">颜色</a>
+ |   
+u16\_weights\_to\_color （ int \_unnamed\_arg0 ） 静态 |
+| <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a>
+ |   
+vec4i\_to\_u16\_indices （ 矢量4i \_unnamed\_arg0 ） 静态 |<p>
+<h2> 枚举：</h2><p>
+
+ 枚举模式：<p>
+<li>    </li><p>
+    MODE\_ADD = 0 --<li>编辑VoxelBuffer.CHANNEL\_SDF时，会增加物质。对建筑很有用。</li><p>
+<li>    </li><p>
+    MODE\_REMOVE = 1 --<li>编辑VoxelBuffer.CHANNEL\_SDF时，会减去物质。对挖掘很有用。</li><p>
+<li>    </li><p>
+    MODE\_SET = 2 --<li>替换体素值而不进行任何混合。对块状体素很有用。</li><p>
+<li>  <b>MODE\_TEXTURE\_PAINT** = **3</b></li><p>
+<p>
+<h2> 属性描述</h2><p>
+
+<li>   国际通道</li><p>
+
+  
+设置要编辑的频道。在地形节点上使用时，它将默认为第一个可用通道，具体取决于流和生成器。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>eraser\_value</b><p>
+
+  
+设置在VoxelTool.MODE\_REMOVE模式下编辑VoxelBuffer.CHANNEL\_TYPE通道时将用于擦除体素的值。<p>
+<li>   英特模式</li><p>
+
+  
+设置函数的行为方式 <span class="inline_code">do_*</span> 。这可能因频道而异。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">float</a></li><p>
+ <b>sdf\_scale</b><p>
+
+  
+使用平滑体素时，将比例应用于有符号距离字段。高尺度（1 或更高）往往会产生块状结果，而低尺度（低于 1，但不太接近零）往往会更平滑。<p>
+  
+这与体素上的VoxelBuffer.Depth配置有关。对于 8 位和 16 位，有符号距离字段可以采用的值范围有限，默认情况下它被钳制为 -1..1，因此梯度只能跨 2 个体素。但是，当使用LOD时，最好将该范围扩展到更长的距离，这是通过缩放SDF值来实现的。<p>
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">float</a></li><p>
+ <b>sdf\_strength</b><p>
+    
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">float</a></li><p>
+ <b>texture\_falloff</b><p>
+    
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>texture\_index</b><p>
+    
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_float.html' target="_blank">float</a></li><p>
+ <b>texture\_opacity</b><p>
+    
+<li>  <a href='https://docs.godotengine.org/en/stable/classes/class_int.html' target="_blank">int</a></li><p>
+ <b>value</b><p>
+    <p>
+  
+设置将使用的体素值。这在编辑VoxelBuffer.CHANNEL\_SDF时无关紧要。<p>
+<h2> 方法说明</h2><p>
+
+<li>    </li><p>
+    intcolor\_to\_u16（ 颜色 ）<p>
+  
+将规范化的 4 浮点颜色编码为 16 位整数数据。它与 COLOR 通道一起使用，在通道表示直接颜色（不使用调色板）的情况下。<p>
+<li>    </li><p>
+    intcolor\_to\_u16\_weights（ 颜色 \_unnamed\_arg0 ）<p>
+  
+将规范化的 4 浮点颜色编码为 16 位整数数据，以便与 WEIGHTS 通道一起使用。<p>
+<li>    </li><p>
+    voidcopy（ Vector3i src\_pos， VoxelBuffer dst\_buffer， int channels\_mask ）<p>
+  
+将体素复制到框中，并将其存储在传递的缓冲区中。<p>
+  
+<span class="inline_code">src_pos</span> 是框的最低角，其大小由 的大小 <span class="inline_code">dst_buffer</span> 决定。<p>
+  
+<span class="inline_code">channels_mask</span> 是一个位掩码，其中每个位都告诉将复制哪些通道。示例： <span class="inline_code">1 << VoxelBuffer.CHANNEL_SDF</span> 仅获取 SDF 数据。 <span class="inline_code">0xff</span> 如果您想要它们，请使用它们。<p>
+<li>    </li><p>
+    voiddo\_box（ Vector3i 开始，Vector3i 结束 ）<p>
+  
+在地形的矩形长方体部分进行操作。 <span class="inline_code">begin</span> 并且 <span class="inline_code">end</span> 具有包容性。通过设置 <span class="inline_code">value</span> 和调用此函数 <span class="inline_code">mode</span> 之前选择操作以及要使用的体素。<p>
+<li>    </li><p>
+    voiddo\_point（ Vector3i pos ）
+    
+<li>    </li><p>
+    voiddo\_sphere（矢量3中心，浮点半径）
+    
+<li>    </li><p>
+    intget\_voxel（ Vector3i pos ）
+    
+<li>    </li><p>
+    floatget\_voxel\_f（ Vector3i pos ）
+    
+<li>    </li><p>
+    Variantget\_voxel\_metadata（ Vector3i pos ）
+    
+<li>    </li><p>
+    boolis\_area\_editable（ AABB 盒子 ）
+    
+<li>    </li><p>
+    Colornormalize\_color（ 彩色 \_unnamed\_arg0 ）
+    
+<li>    </li><p>
+    voidpaste（ Vector3i dst\_pos， VoxelBuffer src\_buffer， int channels\_mask ）
+    <p>
+  
+将体素粘贴到给定缓冲区中特定位置的框中。<p>
+  
+<span class="inline_code">dst_pos</span> 是框的最低角，其大小由 的大小 <span class="inline_code">src_buffer</span> 决定。<p>
+  
+<span class="inline_code">channels_mask</span> 是一个位掩码，其中每个位都指示将修改哪些通道。示例： <span class="inline_code">1 << VoxelBuffer.CHANNEL_SDF</span> 仅写入 SDF 数据。 <span class="inline_code">0xff</span> 如果您想要它们，请使用它们。<p>
+<li>    </li><p>
+    voidpaste\_masked（ Vector3i dst\_pos， VoxelBuffer src\_buffer， int channels\_mask， int mask\_channel， int mask\_value ）<p>
+  
+将体素粘贴到给定缓冲区中特定位置的框中。不会粘贴在掩码通道中具有特定值的体素。<p>
+  
+<span class="inline_code">dst_pos</span> 是框的最低角，其大小由 的大小 <span class="inline_code">src_buffer</span> 决定。<p>
+  
+<span class="inline_code">channels_mask</span> 是一个位掩码，其中每个位都指示将修改哪些通道。示例： <span class="inline_code">1 << VoxelBuffer.CHANNEL_SDF</span> 仅写入 SDF 数据。 <span class="inline_code">0xff</span> 如果您想要它们，请使用它们。<p>
+  
+<span class="inline_code">src_mask_channel</span> 将用于查找掩码值的通道。<p>
+  
+<span class="inline_code">src_mask_value</span> 如果体素在为遮罩指定的通道中具有此值，则不会粘贴它们。<p>
+<li>    </li><p>
+    体素光线投射结果雷投射（ 矢量3 原点， 矢量3 方向， 浮点数 max\_distance=10.0， int collision\_mask=4294967295 ）<p>
+  
+运行基于体素的光线投射，以查找来自原点和方向的第一个命中。<p>
+  
+如果体素被命中，则返回结果对象，否则返回 <span class="inline_code">null</span> 。<p>
+  
+当不能依赖碰撞体时，这很有用。它也可能更快（至少在短距离内），并且更精确地找到被击中的体素。它在内部使用 DDA 算法。<p>
+  
+<span class="inline_code">collision_mask</span> 目前仅与块状体素一起使用。它与VoxelBlockyModel.collision\_mask相结合，以决定光线可以与哪种体素类型碰撞。<p>
+<li>    </li><p>
+    voidset\_voxel（ Vector3i pos， int v ）<p>
+  
+设置当前通道上特定体素的原始整数值。<p>
+<li>    </li><p>
+    voidset\_voxel\_f（ Vector3i pos， float v ）<p>
+  
+设置特定体素的规范化十进制值。在修改 SDF 通道上的体素时，最好使用此方法。<p>
+<li>    </li><p>
+    voidset\_voxel\_metadata（ Vector3i pos， Variant meta ）
+    
+<li>    </li><p>
+    voidsmooth\_sphere（ 矢量3 sphere\_center， 浮点sphere\_radius， 整数 blur\_radius ）
+    <p>
+  
+通过在球形区域中执行方框模糊来平滑地形。强度在球体中心处最大，在球体表面线性降低至零。球体外的体素不会受到影响。<p>
+  
+<span class="inline_code">sphere_center</span> 是将平滑的地形中的位置。<p>
+  
+<span class="inline_code">sphere_radius</span> 球体的半径从 <span class="inline_code">center</span> 体素值将受到影响的位置开始。应大于零。<p>
+  
+<span class="inline_code">blur_radius</span> 将采样以计算平均体素值的框模糊长度的一半。值越高，平滑效果越强。应至少为 1。<p>
+  
+注 1：目前仅适用于使用 SDF 数据（平滑体素）的地形。<p>
+  
+注意2：当心使用高 <span class="inline_code">sphere_radius</span> 和高， <span class="inline_code">blur_radius</span> 因为如果每秒调用60次，性能会迅速下降。<p>
+<li>    </li><p>
+    Vector4iu16\_indices\_to\_vec4i（ 国际 \_unnamed\_arg0 ）<p>
+  
+将来自 INDICES 通道的原始体素整数数据解码为 4 整数向量。<p>
+<li>    </li><p>
+    Coloru16\_weights\_to\_color（ 国际 \_unnamed\_arg0 ）<p>
+  
+将来自 WEIGHTS 通道的原始体素整数数据解码为规范化的 4 浮点颜色。<p>
+<li>    </li><p>
+    intvec4i\_to\_u16\_indices（ 矢量4i \_unnamed\_arg0 ）<p>
+  
+将 4 整数矢量编码为 16 位整数体素数据，以便在 INDICES 通道中使用。<p>
+_  
+生成于 Oct 02， 2023_
+
+		</div>
+		
+	</div>
+	<!-- 右侧 - 文章目录区 -->
+	<aside class="right">
+		<h3>目录</h3>
+		<ul>
+			
+		</ul>
+	</aside>
+	<!-- 实施语法高亮 -->
+	<script>hljs.highlightAll();</script>
+</body>
+</html>
